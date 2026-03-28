@@ -1,0 +1,19 @@
+.barangay-title {
+    display: block;
+    color: #4f8076bd;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    /*font-size: 1.846em;*/
+    margin: 12px 0px 10px;
+    font-weight: 300;
+    /*padding: 10px;*/
+    font-family: initial;
+}
+header p{
+	line-height: 30px;
+}
+/*.table a
+{
+    display:block;
+    text-decoration:none;
+}*/

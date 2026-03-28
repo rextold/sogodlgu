@@ -1,0 +1,44 @@
+div.gallery {
+    margin: 0 auto;
+    margin-bottom: 19px;;
+    float: left;
+    max-width: 67%;
+  
+}
+div.gallery img {
+    width: 100%;
+    height: auto;
+    border: cadetblue solid 1px;
+}
+
+div.desc {
+  /*  padding: 7px;
+    text-align: center;*/
+    margin-top:5px;
+}
+.event-title{
+	font-size: small;
+	color: darkcyan;
+}
+.event-date{
+	font-family: monospace;
+	color: darkgray;
+}
+.event-venue{
+	font-family: unset;
+	color: darkgray;
+	display: block;
+	font-size: 12px;
+}
+
+    .ul-events{list-style: none;position: relative;left: -19px;width: 100%;}
+    .ul-events .venue{font-size: 14px;color: #a09cab}
+    .events-container .img img{width: 300px; height: auto;float: left;padding-right: 10px;}
+    .events-container img:hover{opacity: 0.5}
+    .events-container{border: aliceblue 2px solid;padding: 13px;}
+    .events-container h6{color: #a90423b8;line-height: 1.2;}
+    .events-container tr{display: inline-grid;}
+
+    @media only screen and (max-width: 40em) {
+        .events-container .img img{width: 100%;}
+    }

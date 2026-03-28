@@ -1,0 +1,12 @@
+.invalid-feedback{
+	color: red;
+    font-size: 13px;
+}
+.mmsg-overflow{
+	height: 83px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    width: 505px;
+}

@@ -1,0 +1,155 @@
+.slide-container{
+	font-family:'Arial', sans-serif;
+	font-size:14px;
+	color:#fff;
+	background:#333;
+	line-height:1.6em;
+	height: 32px;
+}
+
+.slide a{
+	color:#fff;
+	text-decoration:none;
+}
+
+.slide h1{
+	text-align:center;
+	margin-bottom:20px;
+}
+
+#container{
+	width:80%;
+	margin:40px auto;
+}
+
+.slide p{
+	margin:0;
+	padding:0 35px 0 0;
+}
+
+#slider{
+	width:100%;
+	height:405px;
+	position:relative;
+	overflow:hidden;
+	bottom: 40px;
+	float:left;
+	padding:0;
+	border:#666 solid 2px;
+	border-radius:5px;
+}
+
+#slider img{
+	width:940px;
+	height:405px;
+}
+
+.img1, .img2, .img3, .img4, .img5 {
+	width:100%;
+	margin:0;
+	padding:0;
+} 
+
+
+.slide{
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+.slide:nth-child(1){
+	background:#ce6868;
+}
+
+.slide:nth-child(2){
+	background:#9ab6b6;
+}
+
+.slide:nth-child(3){
+	background:#98cc98;
+}
+
+.slide:nth-child(4){
+	background:#e7b892;
+}
+
+.slide:nth-child(5){
+	background:#c4ad43;
+}
+
+
+.slide-copy{
+	position:absolute;
+	bottom:0;
+	left:0;
+	padding:10px 20px 20px 20px;
+	background:7f7f7f;
+	background: rgba(0,0,0,0.5);
+	width:100%;
+	max-height:32%;
+}
+
+#prev, #next{
+	cursor:pointer;
+	z-index:1;
+	background:#666;
+	height:50px;
+	width:50px;
+	display:inline-block;
+	position:relative;
+	top:105px;
+	margin:0;
+	padding:0;
+	opacity:0.7;
+	filter: alpha(opacity=70);
+}
+
+#next{
+	float:right;
+	right:1px;
+}
+
+#prev{
+	float:left;
+	left:0;
+}
+
+.arrow-right {
+	width: 0; 
+	height: 0; 
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;	
+	border-left: 15px solid #fff;
+	position:relative;
+	top:20%;
+	right:-40%;
+}
+
+.arrow-left {
+	width: 0; 
+	height: 0; 
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;	
+	border-right:15px solid #fff; 
+	position:relative;
+	top:20%;
+	left:30%;
+}
+
+/** media query for mobile smartphones **/
+@media only screen and (max-width: 40em) {
+	#slider img {
+    		width: 940px;
+    		height: 165px;
+	}
+	#slider{
+		width:100%;
+		height:244px;
+		position:relative;
+		overflow:hidden;
+		bottom: 40px;
+		float:left;
+		padding:0;
+		border:#666 solid 2px;
+		border-radius:5px;
+	}
+}

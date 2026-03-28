@@ -1,0 +1,102 @@
+.ribbon{
+	margin: 0px 0 23px;
+    position: relative;
+    text-transform: uppercase;
+   	background: rgb(0, 80, 116);
+    border: 1px solid rgba(0,0,0,.3);
+    box-shadow: 0px 1px 3px rgba(0,0,0,.2);
+    padding: 5px 31px 0px;
+    clear: both;
+}
+.ribbon h4{
+	font-size: 17px;
+    font-family: initial;
+}
+div.left_ribbon{
+	color: #f3f3f3c7;
+    margin-left: -38px;
+    /* float: left; */
+    width: 100%;
+}
+ 
+div.left_ribbon h2{
+	margin: 0 12px;
+}
+ 
+div.left_ribbon::before{
+    display: block;
+    /* width: 23px; */
+    /* height: 0px; */
+    position: absolute;
+    bottom: -12px;
+    left: -1px;
+    content: "";
+    border-bottom: 11px solid transparent;
+    border-right: 21px solid rgb(0, 80, 116);
+}
+ 
+div.left_ribbon::after{
+	display: block;
+	width: 6px;
+	height: 26px;
+	position: absolute;
+	bottom: 3px;
+	right: -1px;
+	content: "";
+	border: 1px solid rgba(0,0,0,.3);
+	transform: skew(0deg,45deg);
+	-ms-transform: skew(0deg,45deg); /* IE 9 */
+	-webkit-transform: skew(0deg,45deg); /* Safari and Chrome */
+	-o-transform: skew(0deg,45deg); /* Opera */
+	-moz-transform: skew(0deg,45deg); /* Firefox */
+	background: rgb(0, 80, 116);
+}
+.ribbon h2{
+	font-size: 1.6em;
+}
+
+.ribbon2 h2{
+	font-size: 1.6em;
+}
+.ribbon2{
+	color: #fff;
+    margin: 2px 0 28px;
+    position: relative;
+    text-transform: uppercase;
+    background: rgb(11, 70, 97);
+    /* border: 1px solid rgba(0,0,0,.3); */
+    box-shadow: 0px 1px 3px rgba(0,0,0,.2);
+    padding: 10px 15px;
+    clear: both;
+}
+div.both_ribbon2{
+	text-align: center;
+	color: #fff;
+	padding: 9px 5px 3px 10px;
+	width: 100%;
+	margin-left: -41px;
+}
+ 
+div.both_ribbon2::before{
+	display: block;
+	width: 10px;
+	height: 0px;
+	position: absolute;
+	bottom: -10px;
+	left: -1px;
+	content: "";
+	border-bottom: 10px solid transparent;
+	border-right: 25px solid rgb(0, 80, 116);
+}
+ 
+/*div.both_ribbon2::after{
+	display: block;
+	width: 10px;
+	height: 0px;
+	position: absolute;
+	bottom: -10px;
+	right: -28px;
+	content: "";
+	border-bottom: 10px solid transparent;
+	border-left: 10px solid rgb(0, 80, 116);
+}*/
