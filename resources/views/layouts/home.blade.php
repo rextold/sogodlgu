@@ -476,11 +476,6 @@
                     <div class="col col-md-10">
                         <div class="d-flex align-items-center" style="gap:18px;">
                             <img src="{{ asset('images/logo/logo2.png') }}" class="logo-img" alt="Sogod LGU Logo">
-                            <div class="lgu-title-block">
-                                <div class="lgu-name">Municipal Government</div>
-                                <div class="lgu-name lgu-name-sogod">of Sogod</div>
-                                <div class="lgu-tagline"><i class="fa fa-map-marker"></i>&nbsp; Southern Leyte, Philippines</div>
-                            </div>
                             @if($headerImg)
                                 <img src="{{ Voyager::image($headerImg->image) }}" class="header-img d-none d-lg-block" alt="Page Header">
                             @endif
