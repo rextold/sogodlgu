@@ -453,29 +453,14 @@
 
                 {{-- Transparency Seal --}}
                 @include('frontend.widgets._transseal')
-
-                {{-- SB Session Info (only on SB page) --}}
-                @if($page === 'Sangguniang Bayan Officials')
+                {{-- SB Session Info (only on SB page, content from DB: pages table slug=sb-session-info) --}}
+                @if($page === 'Sangguniang Bayan Officials' && !empty($sessionPage))
                 <div class="leo-session-card mt-3" data-aos="fade-left">
                     <div class="lssc-head">
-                        <i class="fa fa-calendar-check-o"></i> Session Information
+                        <i class="fa fa-calendar-check-o"></i> {{ $sessionPage->title }}
                     </div>
                     <div class="lssc-body">
                         <ul class="session-info-list">
-                            <li>
-                                <i class="fa fa-gavel"></i>
-                                <div>
-                                    <span class="si-label">Regular Sessions</span>
-                                    <span class="si-value">Every Monday, 9:00 AM</span>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fa fa-building"></i>
-                                <div>
-                                    <span class="si-label">Session Hall</span>
-                                    <span class="si-value">Sogod Municipal Hall, Session Hall</span>
-                                </div>
-                            </li>
                             <li>
                                 <i class="fa fa-users"></i>
                                 <div>
@@ -483,14 +468,10 @@
                                     <span class="si-value">{{ $sbmembers->count() }} SB Members</span>
                                 </div>
                             </li>
-                            <li>
-                                <i class="fa fa-calendar"></i>
-                                <div>
-                                    <span class="si-label">Current Term</span>
-                                    <span class="si-value">2022 â€“ 2025</span>
-                                </div>
-                            </li>
                         </ul>
+                        @if($sessionPage->body)
+                            <div class="session-cms-body">{!! $sessionPage->body !!}</div>
+                        @endif
                     </div>
                 </div>
                 @endif

@@ -15,6 +15,7 @@ use App\Offices_p;
 use App\Keyofficials;
 use App\Ordinance;
 use App\Resolution;
+use App\Page;
 use Carbon\Carbon;
 use Faker\Generator;
 use App\Category;
@@ -211,12 +212,14 @@ class GovernmentController extends Controller
         }else{
             $count = 1;
         }
+        $sessionPage = \App\Page::where('slug','sb-session-info')->where('status','ACTIVE')->first();
         
         return view('frontend/government/legislative/officials',[
             'title' =>'Government | Legislative officials',
             'sbmembers' =>  $sbmembers,
             'rowCount' => $count,
-            'page' => 'Sangguniang Bayan Officials'
+            'page' => 'Sangguniang Bayan Officials',
+            'sessionPage' => $sessionPage,
         ]);
     }
     public function elected_officials(){
