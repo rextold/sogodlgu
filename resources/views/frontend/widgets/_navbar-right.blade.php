@@ -8,8 +8,7 @@
     padding: 12px 20px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-#offCanvasRight .menu li a:hover { color: #f4c542; background: rgba(234,82,17,0.15); }
-#offCanvasRight .menu li.active > a, #offCanvasRight .menu li:hover { background: rgba(234,82,17,0.15); }
+#offCanvasRight .menu li a:hover { color: #f4c542; background: rgba(255,255,255,0.06); }
 #offCanvasRight .is-drilldown-submenu { background: #0a2d3e; }
 #offCanvasRight .is-drilldown-submenu li a { color: #fff; }
 #offCanvasRight .js-drilldown-back > a::before { border-color: rgba(255,255,255,0.7) transparent transparent; }

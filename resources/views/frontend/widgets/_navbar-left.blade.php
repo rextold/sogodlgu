@@ -1,18 +1,4 @@
 
-<style>
-/* Mobile title-bar — orange primary */
-.title-bar {
-    background: #ea5211 !important;
-    padding: 0.5rem 1rem;
-}
-.title-bar-title, .title-bar a, .title-bar h1, .title-bar h1 a {
-    color: #fff !important;
-    font-family: 'Roboto Condensed', sans-serif;
-}
-.title-bar button { color: #fff; background: transparent; border: none; font-size: 1.4rem; }
-.title-bar button:focus { outline: none; }
-</style>
-
 <div class="title-bar" data-responsive-toggle="gwt-menu" data-hide-for="large" style="">
     <div class="title-bar-left">
         <a href="https://www.sogodlgu.gov.ph"><h1 class="title-bar-title">SOGODLGU</h1></a>
