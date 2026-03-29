@@ -338,7 +338,7 @@
                     <div class="asc-body">
                         <ul class="art-quick-list">
                             <li><a href="{{ route('news') }}"><i class="fa fa-newspaper-o"></i> News &amp; Updates</a></li>
-                            <li><a href="{{ route('advisory') }}"><i class="fa fa-bell"></i> Advisories</a></li>
+                            <li><a href="{{ url('posts/advisory') }}"><i class="fa fa-bell"></i> Advisories</a></li>
                             <li><a href="{{ route('gov.legislative.ordinances') }}"><i class="fa fa-gavel"></i> Ordinances</a></li>
                             <li><a href="{{ route('gov.legislative.resolutions') }}"><i class="fa fa-file-text-o"></i> Resolutions</a></li>
                             <li><a href="{{ route('tourism') }}"><i class="fa fa-map-marker"></i> Tourism</a></li>
