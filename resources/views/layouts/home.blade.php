@@ -157,14 +157,13 @@
             border-radius: 8px;
             filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
         }
-        /* Mobile header image — full-width strip below logo row */
+        /* Mobile header image — full-width strip below logo/clock row */
         .masthead .header-img-mobile {
-            display: none;
+            display: block;
             width: 100%;
             max-height: 160px;
             object-fit: cover;
-            border-radius: 8px;
-            margin-top: 10px;
+            border-radius: 0 0 8px 8px;
             filter: brightness(0.9);
             box-shadow: 0 3px 12px rgba(0,0,0,0.35);
         }
@@ -267,8 +266,6 @@
         /* Mobile (≤ 767px) */
         @media (max-width: 767px) {
             .masthead .logo-img { width: 90px; height: 90px; }
-            .masthead .header-img { display: none !important; }
-            .masthead .header-img-mobile { display: block; }
             .masthead .lgu-title-block .lgu-name { font-size: 0.95rem; }
             .masthead .lgu-title-block { gap: 2px; }
             .masthead .dateclock { font-size: 0.75rem; padding: 0.4rem 0.65rem; border-radius: 8px; min-width: 70px; }
@@ -486,8 +483,8 @@
         @endif
         <div class="masthead-inner">
             <div class="container-fluid">
+                <!-- Row 1: Logo (left) + Clock (right) — always side-by-side -->
                 <div class="row align-items-center">
-                    <!-- Left: Logo + Title + Header Image -->
                     <div class="col col-md-10">
                         <div class="d-flex align-items-center" style="gap:18px;">
                             <img src="{{ asset('images/logo/logo2.png') }}" class="logo-img" alt="Sogod LGU Logo">
@@ -495,15 +492,19 @@
                                 <img src="{{ Voyager::image($headerImg->image) }}" class="header-img d-none d-lg-block" alt="Page Header">
                             @endif
                         </div>
-                        @if($headerImg)
-                            <img src="{{ Voyager::image($headerImg->image) }}" class="header-img-mobile" alt="Page Header">
-                        @endif
                     </div>
-                    <!-- Right: Clock — stays beside logo even on mobile -->
                     <div class="col-auto col-md-2 text-right">
                         <div id="clock" class="dateclock"></div>
                     </div>
                 </div>
+                <!-- Row 2: Header image — mobile only, full-width strip -->
+                @if($headerImg)
+                <div class="row d-md-none" style="margin-top:10px;">
+                    <div class="col-12 px-0">
+                        <img src="{{ Voyager::image($headerImg->image) }}" class="header-img-mobile" alt="Page Header">
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>
