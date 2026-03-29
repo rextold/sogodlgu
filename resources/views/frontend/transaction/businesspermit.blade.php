@@ -495,8 +495,48 @@
     .faq-question { font-size: 0.84rem; padding: 11px 4px; }
     .faq-answer { font-size: 0.81rem; }
     /* Fees table — horizontal scroll */
-    .bp-fees-card .bpfc-body { padding: 14px 12px; overflow-x: auto; }
-    .fees-table { min-width: 480px; }
+    .bp-fees-card .bpfc-body { padding: 14px 12px; }
+    /* Stacked card layout — no scroll needed */
+    .fees-table thead { display: none; }
+    .fees-table,
+    .fees-table tbody,
+    .fees-table tr,
+    .fees-table td { display: block; width: 100%; }
+    .fees-table tbody tr {
+        background: #fff;
+        border-radius: 10px;
+        border: 1px solid #e8edf5;
+        margin-bottom: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .fees-table tbody tr:hover td { background: transparent; }
+    .fees-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
+        text-align: right;
+        padding: 9px 14px;
+        border-bottom: 1px solid #f4f4f4;
+        font-size: 0.83rem;
+    }
+    .fees-table tbody td:last-child { border-bottom: none; }
+    .fees-table tbody td[colspan] {
+        display: block; text-align: left;
+        background: #fffbf0; font-size: 0.78rem;
+    }
+    .fees-table tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #0052a5;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        flex-shrink: 0;
+        text-align: left;
+        min-width: 100px;
+    }
     /* Sidebar cards */
     .deadline-banner { padding: 12px 14px; }
     .deadline-banner .db-title { font-size: 0.84rem; }
@@ -715,29 +755,29 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Business Tax</td>
-                                    <td>Varies</td>
-                                    <td>Based on gross sales / receipts</td>
+                                    <td data-label="Fee Type">Business Tax</td>
+                                    <td data-label="Amount">Varies</td>
+                                    <td data-label="Notes">Based on gross sales / receipts</td>
                                 </tr>
                                 <tr>
-                                    <td>Mayor's Permit Fee</td>
-                                    <td>₱500 – ₱2,000+</td>
-                                    <td>Based on capitalization and business category</td>
+                                    <td data-label="Fee Type">Mayor's Permit Fee</td>
+                                    <td data-label="Amount">₱500 – ₱2,000+</td>
+                                    <td data-label="Notes">Based on capitalization and business category</td>
                                 </tr>
                                 <tr>
-                                    <td>Sanitary Permit Fee</td>
-                                    <td>₱200 – ₱500</td>
-                                    <td>Payable to the Municipal Health Office</td>
+                                    <td data-label="Fee Type">Sanitary Permit Fee</td>
+                                    <td data-label="Amount">₱200 – ₱500</td>
+                                    <td data-label="Notes">Payable to the Municipal Health Office</td>
                                 </tr>
                                 <tr>
-                                    <td>BFP Inspection Fee</td>
-                                    <td>Varies</td>
-                                    <td>Payable to Bureau of Fire Protection</td>
+                                    <td data-label="Fee Type">BFP Inspection Fee</td>
+                                    <td data-label="Amount">Varies</td>
+                                    <td data-label="Notes">Payable to Bureau of Fire Protection</td>
                                 </tr>
                                 <tr>
-                                    <td>Surcharge (late renewal)</td>
-                                    <td>25% of business tax</td>
-                                    <td>Applies after January 20</td>
+                                    <td data-label="Fee Type">Surcharge (late renewal)</td>
+                                    <td data-label="Amount">25% of business tax</td>
+                                    <td data-label="Notes">Applies after January 20</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" class="fee-note">
