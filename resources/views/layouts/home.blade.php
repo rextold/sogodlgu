@@ -256,9 +256,9 @@
             .masthead .header-img-mobile { display: block; }
             .masthead .lgu-title-block .lgu-name { font-size: 0.95rem; }
             .masthead .lgu-title-block { gap: 2px; }
-            .masthead .dateclock { font-size: 0.85rem; padding: 0.45rem 0.8rem; border-radius: 8px; }
-            .masthead .dateclock .time { font-size: 1rem; }
-            .masthead .dateclock .date { font-size: 0.72rem; }
+            .masthead .dateclock { font-size: 0.75rem; padding: 0.4rem 0.65rem; border-radius: 8px; min-width: 70px; }
+            .masthead .dateclock .time { font-size: 0.92rem; }
+            .masthead .dateclock .date { font-size: 0.65rem; margin-top: 2px; }
             /* Quick Services Bar — horizontal scroll on mobile */
             .quick-services-bar .qs-inner {
                 flex-wrap: nowrap;
@@ -473,7 +473,7 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <!-- Left: Logo + Title + Header Image -->
-                    <div class="col-12 col-md-10">
+                    <div class="col col-md-10">
                         <div class="d-flex align-items-center" style="gap:18px;">
                             <img src="{{ asset('images/logo/logo2.png') }}" class="logo-img" alt="Sogod LGU Logo">
                             <div class="lgu-title-block">
@@ -489,8 +489,8 @@
                             <img src="{{ Voyager::image($headerImg->image) }}" class="header-img-mobile" alt="Page Header">
                         @endif
                     </div>
-                    <!-- Right: Clock -->
-                    <div class="col-12 col-md-2 text-right mt-2 mt-md-0">
+                    <!-- Right: Clock — stays beside logo even on mobile -->
+                    <div class="col-auto col-md-2 text-right">
                         <div id="clock" class="dateclock"></div>
                     </div>
                 </div>
