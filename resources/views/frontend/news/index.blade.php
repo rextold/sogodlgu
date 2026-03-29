@@ -337,7 +337,7 @@
                 <div class="news-filter-bar" data-aos="fade-up">
                     <span class="nfb-icon"><i class="fa fa-search"></i></span>
                     <input type="text" id="newsSearchInput" placeholder="Search news by title..." oninput="filterNews()">
-                    <span class="nfb-count" id="newsCount">{{ $news->where(function($a){ return $a->category && $a->category->order != 2; })->count() }} articles</span>
+                    <span class="nfb-count" id="newsCount">{{ $news->filter(function($a){ return $a->category && $a->category->order != 2; })->count() }} articles</span>
                 </div>
 
                 <div class="news-grid" id="newsGrid">
