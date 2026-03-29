@@ -588,14 +588,14 @@
             {{-- ===== LEFT COLUMN ===== --}}
             <div class="col-md-8">
 
-                {{-- CMS Page Content --}}
-                @if($page = App\Page::where('slug','business-permit')->first())
+                {{-- CMS Page Content — edit via Voyager Admin > Pages > slug: business-permit --}}
+                @if($cmsPage)
                 <div class="bp-content-card" data-aos="fade-up">
                     <div class="bpcc-header">
-                        <i class="fa fa-file-text"></i> About Business Permit
+                        <i class="fa fa-file-text"></i> {{ $cmsPage->title ?? 'About Business Permit' }}
                     </div>
                     <div class="bpcc-body">
-                        {!! $page->body !!}
+                        {!! $cmsPage->body !!}
                     </div>
                 </div>
                 @endif
