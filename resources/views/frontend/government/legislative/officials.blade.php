@@ -265,6 +265,8 @@
     .leo-card.leo-card-featured .lc-photo-wrap { width: 100%; height: 280px; min-height: unset; }
     .leo-card.leo-card-featured .lc-photo-wrap img { object-position: center 20%; }
     .leo-card.leo-card-featured .lc-meta { justify-content: center; }
+    .leo-card.leo-card-featured .lc-pos-badge { align-self: center; }
+    .leo-card.leo-card-featured .lc-body { align-items: center; }
 }
 @media (max-width: 767px) {
     .leo-hero h1 { font-size: 1.4rem; }
