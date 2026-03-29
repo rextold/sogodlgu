@@ -111,17 +111,13 @@
 .sogod-facts-list li i { color: #0052a5; margin-top: 2px; flex-shrink: 0; width: 14px; text-align: center; }
 .sogod-facts-list li strong { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.3px; color: #001f2d; margin-bottom: 1px; }
 
-/* ---- Map Card ---- */
-.about-map-card {
-    background: #fff; border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 24px;
+/* ---- Map (plain) ---- */
+.about-map-plain {
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    margin-bottom: 24px;
 }
-.about-map-card .amc-header {
-    background: linear-gradient(135deg, #186152, #0e3d32);
-    padding: 11px 18px; display: flex; align-items: center; gap: 9px;
-    color: #fff; font-weight: 700; font-size: 0.88rem;
-}
-.about-map-card iframe {
+.about-map-plain iframe {
     width: 100%; height: 280px; display: block; border: 0;
 }
 
@@ -318,10 +314,7 @@
                 </div>
 
                 {{-- Map --}}
-                <div class="about-map-card" data-aos="fade-left" data-aos-delay="60">
-                    <div class="amc-header">
-                        <i class="fa fa-map-o"></i> Location Map
-                    </div>
+                <div class="about-map-plain" data-aos="fade-left" data-aos-delay="60">
                     <iframe
                         src="https://maps.google.com/maps?q=Sogod+southern+leyte+municipal+hall&t=k&z=13&ie=UTF8&iwloc=&output=embed"
                         allowfullscreen loading="lazy"
