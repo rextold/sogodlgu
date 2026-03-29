@@ -299,11 +299,11 @@
             .breadcrumb { flex-wrap: wrap; padding: 6px 10px; font-size: 0.78rem; }
         }
 
-        /* General img responsiveness fallback */
-        img { max-width: 100%; height: auto; }
+        /* General img responsiveness fallback — only for images without explicit height rules */
+        img:not([style*="height"]) { max-width: 100%; }
 
-        /* Prevent body horizontal overflow on all pages */
-        body { overflow-x: hidden; }
+        /* Prevent horizontal scroll: apply to a wrapper, NOT body — to avoid breaking AOS */
+        .off-canvas-wrapper { overflow-x: hidden; }
         </style>
 
 
