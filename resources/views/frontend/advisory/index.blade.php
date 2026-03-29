@@ -86,78 +86,116 @@
 }
 .adv-search-bar .asb-count { font-size: 0.75rem; color: #888; white-space: nowrap; flex-shrink: 0; }
 
-/* ---- Advisory Cards ---- */
+/* ---- Advisory Grid Cards ---- */
 .adv-list-card {
-    display: flex; flex-direction: column; gap: 0;
-    background: #fff; border-radius: 12px; overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
 }
 .adv-list-header {
     background: linear-gradient(135deg, #001f2d, #003d7a);
     padding: 13px 20px; color: #fff; font-weight: 700; font-size: 0.92rem;
-    border-bottom: 3px solid #ea5211;
+    border-bottom: 3px solid #ea5211; border-radius: 12px 12px 0 0;
     display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px;
 }
 .adv-list-header .alh-count {
     background: #ea5211; color: #fff;
     font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px;
 }
+.adv-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
 .adv-item {
-    display: flex; align-items: flex-start; gap: 14px;
-    padding: 16px 18px; border-bottom: 1px solid #f0f4fb;
-    transition: background 0.2s;
+    background: #fff; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    display: flex; flex-direction: column;
+    transition: transform 0.22s, box-shadow 0.22s;
+    text-decoration: none; color: inherit;
 }
-.adv-item:last-child { border-bottom: none; }
-.adv-item:hover { background: #f5f8ff; }
-.adv-thumb {
-    width: 80px; height: 72px; border-radius: 8px; flex-shrink: 0;
-    overflow: hidden; background: #e9eef6;
+.adv-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.13);
+    text-decoration: none; color: inherit;
 }
-.adv-thumb img {
+
+/* Image banner */
+.adv-img-wrap {
+    position: relative; width: 100%; height: 160px; overflow: hidden;
+    background: linear-gradient(135deg, #001f2d, #003d7a);
+    flex-shrink: 0;
+}
+.adv-img-wrap img {
     width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.3s;
+    transition: transform 0.35s;
 }
-.adv-item:hover .adv-thumb img { transform: scale(1.06); }
-.adv-thumb-placeholder {
-    width: 80px; height: 72px; border-radius: 8px; flex-shrink: 0;
-    background: linear-gradient(135deg, #ea5211, #c9460e);
+.adv-item:hover .adv-img-wrap img { transform: scale(1.07); }
+.adv-img-placeholder {
+    width: 100%; height: 100%;
     display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 1.4rem;
+    background: linear-gradient(135deg, #0052a5, #003d7a);
+    color: rgba(255,255,255,0.25); font-size: 3rem;
 }
-.adv-body { flex: 1; min-width: 0; }
-.adv-tag {
-    display: inline-block; background: rgba(234,82,17,0.1); color: #ea5211;
-    font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 12px;
-    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;
+.adv-img-tag {
+    position: absolute; top: 10px; left: 10px;
+    background: #ea5211; color: #fff;
+    font-size: 0.62rem; font-weight: 700; padding: 3px 10px;
+    border-radius: 20px; text-transform: uppercase; letter-spacing: 0.6px;
+}
+.adv-img-views {
+    position: absolute; bottom: 8px; right: 10px;
+    background: rgba(0,0,0,0.52); color: #fff;
+    font-size: 0.68rem; padding: 2px 8px; border-radius: 10px;
+    backdrop-filter: blur(4px);
+}
+
+/* Card body */
+.adv-card-body {
+    padding: 14px 16px; flex: 1; display: flex; flex-direction: column;
 }
 .adv-title {
-    font-size: 0.92rem; font-weight: 700; color: #001f2d; line-height: 1.4;
-    margin-bottom: 5px; white-space: normal;
+    font-size: 0.9rem; font-weight: 800; color: #001f2d; line-height: 1.4;
+    margin-bottom: 6px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
 .adv-item:hover .adv-title { color: #0052a5; }
 .adv-excerpt {
-    font-size: 0.78rem; color: #666; line-height: 1.5; margin-bottom: 8px;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    font-size: 0.77rem; color: #666; line-height: 1.55; flex: 1;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    margin-bottom: 10px;
 }
-.adv-meta {
-    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+
+/* Card footer */
+.adv-card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 10px; border-top: 1px solid #f0f4fb; margin-top: auto;
 }
-.adv-meta span { font-size: 0.72rem; color: #999; }
+.adv-meta { display: flex; flex-direction: column; gap: 2px; }
+.adv-meta span { font-size: 0.7rem; color: #aaa; }
 .adv-meta i { color: #ea5211; margin-right: 3px; }
 .adv-read-more {
-    display: inline-block; margin-top: 8px;
-    font-size: 0.75rem; font-weight: 700; color: #ea5211;
-    text-decoration: none; transition: color 0.2s;
+    display: inline-flex; align-items: center; gap: 5px;
+    background: linear-gradient(135deg, #ea5211, #c9460e);
+    color: #fff; font-size: 0.72rem; font-weight: 700;
+    padding: 5px 12px; border-radius: 20px;
+    text-decoration: none; white-space: nowrap;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
 }
-.adv-read-more:hover { color: #c9460e; text-decoration: none; }
-.adv-read-more i { font-size: 0.68rem; margin-left: 3px; }
+.adv-read-more:hover { opacity: 0.88; color: #fff; text-decoration: none; }
 
-/* No results */
+/* No results / empty */
 .adv-no-results {
     padding: 36px 20px; text-align: center; color: #aaa; display: none;
+    background: #fff; border-radius: 0 0 12px 12px;
 }
 .adv-no-results i { font-size: 2rem; display: block; margin-bottom: 8px; }
-.adv-empty { padding: 40px 20px; text-align: center; color: #aaa; }
+.adv-empty {
+    padding: 40px 20px; text-align: center; color: #aaa;
+    background: #fff; border-radius: 0 0 12px 12px;
+}
 .adv-empty i { font-size: 2.5rem; display: block; margin-bottom: 10px; }
 
 /* ---- Pagination ---- */
@@ -199,7 +237,8 @@
     .adv-hero h1 { font-size: 1.4rem; }
     .adv-stats .as-item { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid rgba(255,255,255,0.12); }
     .adv-stats .as-item:nth-child(even) { border-right: none; }
-    .adv-thumb, .adv-thumb-placeholder { width: 60px; height: 60px; }
+    .adv-cards-grid { grid-template-columns: 1fr; }
+    .adv-img-wrap { height: 180px; }
 }
 @media (max-width: 480px) { .adv-hero h1 { font-size: 1.1rem; } }
 </style>
@@ -278,40 +317,46 @@
                         <span class="alh-count" id="advListCount">{{ $advisories->count() }} records</span>
                     </div>
 
+                    <div class="adv-cards-grid" id="advCardsGrid">
                     @forelse($advisories as $advisory)
-                        <div class="adv-item" data-title="{{ strtolower($advisory->title) }}">
-                            @if($advisory->photo)
-                                <div class="adv-thumb">
+                        <a class="adv-item" data-title="{{ strtolower($advisory->title) }}"
+                           href="{{ url('advisory', [$advisory->id, $advisory->title]) }}">
+
+                            {{-- Image banner --}}
+                            <div class="adv-img-wrap">
+                                @if($advisory->photo)
                                     <img src="/images/advisory/{{ $advisory->photo }}"
                                          alt="{{ $advisory->title }}"
-                                         onerror="this.parentElement.outerHTML='<div class=adv-thumb-placeholder><i class=fa fa-bullhorn></i></div>'">
-                                </div>
-                            @else
-                                <div class="adv-thumb-placeholder">
-                                    <i class="fa fa-bullhorn"></i>
-                                </div>
-                            @endif
-                            <div class="adv-body">
-                                <span class="adv-tag"><i class="fa fa-bullhorn"></i> Advisory</span>
+                                         onerror="this.parentElement.innerHTML='<div class=adv-img-placeholder><i class=fa fa-bullhorn></i></div>'">
+                                @else
+                                    <div class="adv-img-placeholder"><i class="fa fa-bullhorn"></i></div>
+                                @endif
+                                <span class="adv-img-tag"><i class="fa fa-bullhorn"></i> Advisory</span>
+                                <span class="adv-img-views"><i class="fa fa-eye"></i> {{ number_format($advisory->hits ?? 0) }}</span>
+                            </div>
+
+                            {{-- Card body --}}
+                            <div class="adv-card-body">
                                 <div class="adv-title">{{ $advisory->title }}</div>
                                 @if(!empty($advisory->descriptions))
                                     <div class="adv-excerpt">{{ $advisory->descriptions }}</div>
                                 @endif
-                                <div class="adv-meta">
-                                    <span><i class="fa fa-calendar"></i> {{ date('F d, Y', strtotime($advisory->created_at)) }}</span>
-                                    <span><i class="fa fa-eye"></i> {{ number_format($advisory->hits ?? 0) }} views</span>
+                                <div class="adv-card-footer">
+                                    <div class="adv-meta">
+                                        <span><i class="fa fa-calendar"></i> {{ date('M d, Y', strtotime($advisory->created_at)) }}</span>
+                                    </div>
+                                    <span class="adv-read-more">Read More <i class="fa fa-arrow-right"></i></span>
                                 </div>
-                                <a href="{{ url('advisory', [$advisory->id, $advisory->title]) }}" class="adv-read-more">
-                                    View Details <i class="fa fa-arrow-right"></i>
-                                </a>
                             </div>
-                        </div>
+
+                        </a>
                     @empty
-                        <div class="adv-empty">
+                        <div class="adv-empty" style="grid-column:1/-1">
                             <i class="fa fa-folder-open-o"></i>
                             No advisories available at this time.
                         </div>
                     @endforelse
+                    </div>
 
                     <div class="adv-no-results" id="advNoResults">
                         <i class="fa fa-search"></i>
