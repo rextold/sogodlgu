@@ -109,7 +109,7 @@
     margin: 16px 0; font-style: italic; color: #555;
 }
 
-/* ---- Gallery strip ---- */
+/* ---- Gallery ---- */
 .tsd-gallery-card {
     background: #fff; border-radius: 14px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
@@ -122,23 +122,73 @@
     border-bottom: 3px solid #f4c542;
     color: #fff; font-weight: 700; font-size: 0.9rem;
 }
-.tsd-gallery-card .tgc-body { padding: 16px; }
-.tsd-photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 10px;
+.tsd-gallery-card .tgc-body { padding: 0; }
+
+/* Featured image area */
+.tgal-featured {
+    position: relative; background: #001f2d; overflow: hidden;
+    cursor: zoom-in;
+}
+.tgal-featured-img {
+    width: 100%; height: 340px; object-fit: cover; display: block;
+    transition: transform 0.4s ease;
+}
+.tgal-featured:hover .tgal-featured-img { transform: scale(1.03); }
+.tgal-feat-overlay {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(to top, rgba(0,10,25,0.5) 0%, transparent 50%);
+}
+.tgal-feat-counter {
+    position: absolute; bottom: 12px; right: 14px;
+    background: rgba(0,0,0,0.55); color: #fff;
+    font-size: 0.72rem; font-weight: 700; padding: 4px 10px;
+    border-radius: 20px; letter-spacing: 0.5px; pointer-events: none;
+}
+.tgal-feat-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,0.45); color: #fff; border: none;
+    width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; transition: background 0.2s; z-index: 3;
+    opacity: 0; transition: opacity 0.2s, background 0.2s;
+}
+.tgal-featured:hover .tgal-feat-nav { opacity: 1; }
+.tgal-feat-nav:hover { background: rgba(234,82,17,0.9); }
+.tgal-feat-prev { left: 10px; }
+.tgal-feat-next { right: 10px; }
+.tgal-fullscreen {
+    position: absolute; top: 10px; right: 12px;
+    background: rgba(0,0,0,0.5); color: #fff; border: none;
+    width: 34px; height: 34px; border-radius: 8px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; z-index: 3; transition: background 0.2s;
+}
+.tgal-fullscreen:hover { background: rgba(234,82,17,0.9); }
+
+/* Thumbnail strip */
+.tgal-strip-wrap {
+    background: #1a1a2e;
+    padding: 10px 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #ea5211 #111;
+}
+.tgal-strip-wrap::-webkit-scrollbar { height: 4px; }
+.tgal-strip-wrap::-webkit-scrollbar-track { background: #111; }
+.tgal-strip-wrap::-webkit-scrollbar-thumb { background: #ea5211; border-radius: 4px; }
+.tgal-strip {
+    display: flex; gap: 8px; width: max-content;
 }
 .tsd-thumb {
-    width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
-    border-radius: 9px; cursor: pointer;
-    transition: transform 0.28s, box-shadow 0.28s, border-color 0.2s;
+    width: 72px; height: 56px; object-fit: cover; flex-shrink: 0;
+    border-radius: 6px; cursor: pointer;
     border: 2px solid transparent;
+    transition: border-color 0.18s, opacity 0.18s;
+    opacity: 0.65;
 }
-.tsd-thumb:hover {
-    transform: scale(1.06); box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-    border-color: #ea5211;
-}
-.tsd-thumb.active-thumb { border-color: #0052a5; box-shadow: 0 0 0 3px rgba(0,82,165,0.25); }
+.tsd-thumb:hover { opacity: 1; border-color: #ea5211; }
+.tsd-thumb.active-thumb { border-color: #f4c542; opacity: 1; box-shadow: 0 0 0 2px rgba(244,197,66,0.4); }
 
 /* ---- Sidebar ---- */
 .tsd-side-card {
@@ -208,11 +258,14 @@
 @media (max-width: 991px) {
     .tsd-cover { height: 340px; }
     .tsd-cover-content { padding: 20px 20px; }
+    .tgal-featured-img { height: 280px; }
 }
 @media (max-width: 767px) {
     .tsd-cover { height: 260px; }
     .tsd-cover-content h1 { font-size: 1.4rem; }
     .tsd-main-card .tmc-body { padding: 16px 14px; }
+    .tgal-featured-img { height: 220px; }
+    .tgal-feat-nav { opacity: 1; }
     #tsdModal .modal-prev { left: 0; }
     #tsdModal .modal-next { right: 0; }
 }
@@ -279,22 +332,52 @@
                 </div>
 
                 {{-- Photo Gallery --}}
-                @if(count($images) > 1)
+                @if(count($images) >= 1)
                 <div class="tsd-gallery-card" data-aos="fade-up" data-aos-delay="80">
                     <div class="tgc-head">
                         <i class="fa fa-camera"></i> Photo Gallery
-                        <span style="margin-left:auto;font-size:0.75rem;font-weight:500;opacity:0.85;">{{ count($images) }} photos</span>
+                        <span style="margin-left:auto;font-size:0.75rem;font-weight:500;opacity:0.85;">{{ count($images) }} {{ count($images) == 1 ? 'photo' : 'photos' }}</span>
                     </div>
                     <div class="tgc-body">
-                        <div class="tsd-photo-grid">
-                            @foreach($images as $i => $img)
-                            <img src="{{ Voyager::image($img) }}"
-                                 class="tsd-thumb {{ $i === 0 ? 'active-thumb' : '' }}"
-                                 data-index="{{ $i }}"
-                                 alt="Photo {{ $i + 1 }}"
-                                 onerror="this.style.display='none'">
-                            @endforeach
+
+                        {{-- Featured large image --}}
+                        <div class="tgal-featured" id="tgal-featured">
+                            <img id="gallery-main-img"
+                                 class="tgal-featured-img"
+                                 src="{{ Voyager::image($images[0]) }}"
+                                 alt="{{ $tspot->title }}">
+                            <div class="tgal-feat-overlay"></div>
+
+                            {{-- Prev / Next arrows --}}
+                            @if(count($images) > 1)
+                            <button class="tgal-feat-nav tgal-feat-prev" id="galPrev"><i class="fa fa-chevron-left"></i></button>
+                            <button class="tgal-feat-nav tgal-feat-next" id="galNext"><i class="fa fa-chevron-right"></i></button>
+                            @endif
+
+                            {{-- Photo index counter --}}
+                            <span class="tgal-feat-counter" id="galCounter">1 / {{ count($images) }}</span>
+
+                            {{-- Fullscreen button --}}
+                            <button class="tgal-fullscreen" id="galFullscreen" title="View fullscreen">
+                                <i class="fa fa-expand"></i>
+                            </button>
                         </div>
+
+                        {{-- Thumbnail strip --}}
+                        @if(count($images) > 1)
+                        <div class="tgal-strip-wrap">
+                            <div class="tgal-strip" id="tgal-strip">
+                                @foreach($images as $i => $img)
+                                <img src="{{ Voyager::image($img) }}"
+                                     class="tsd-thumb {{ $i === 0 ? 'active-thumb' : '' }}"
+                                     data-index="{{ $i }}"
+                                     alt="Photo {{ $i + 1 }}"
+                                     onerror="this.style.display='none'">
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif
+
                     </div>
                 </div>
                 @endif
@@ -413,33 +496,81 @@
 
 <script>
 (function () {
-    var images = @json($images);
-    var currentIdx = 0;
+    var images  = @json($images);
+    var baseUrl = '{{ Voyager::image("__IMG__") }}';
+    var current = 0;
+    var total   = images.length;
 
-    function setActive(idx) {
-        currentIdx = (idx + images.length) % images.length;
-        var src = '{{ Voyager::image("__IMG__") }}'.replace('__IMG__', images[currentIdx]);
-        document.getElementById('cover-img') && (document.getElementById('cover-img').src = src);
-        document.getElementById('modal-img') && (document.getElementById('modal-img').src = src);
-        document.querySelectorAll('.tsd-thumb').forEach(function(t) {
-            t.classList.toggle('active-thumb', parseInt(t.dataset.index) === currentIdx);
-        });
+    function imgUrl(path) {
+        return baseUrl.replace('__IMG__', path);
     }
 
-    document.querySelectorAll('.tsd-thumb').forEach(function(el) {
-        el.addEventListener('click', function() {
-            setActive(parseInt(this.dataset.index));
-            $('#tsdModal').modal('show');
+    function goTo(idx) {
+        current = (idx + total) % total;
+
+        // Update gallery main image
+        var mainImg = document.getElementById('gallery-main-img');
+        if (mainImg) mainImg.src = imgUrl(images[current]);
+
+        // Update cover hero
+        var coverImg = document.getElementById('cover-img');
+        if (coverImg) coverImg.src = imgUrl(images[current]);
+
+        // Update modal
+        var modalImg = document.getElementById('modal-img');
+        if (modalImg) modalImg.src = imgUrl(images[current]);
+
+        // Update counter
+        var counter = document.getElementById('galCounter');
+        if (counter) counter.textContent = (current + 1) + ' / ' + total;
+
+        // Sync active thumbnail
+        document.querySelectorAll('.tsd-thumb').forEach(function(t) {
+            t.classList.toggle('active-thumb', parseInt(t.dataset.index) === current);
         });
+
+        // Scroll active thumb into view
+        var activeTh = document.querySelector('.tsd-thumb.active-thumb');
+        if (activeTh) activeTh.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+
+    // Thumbnail clicks
+    document.querySelectorAll('.tsd-thumb').forEach(function(el) {
+        el.addEventListener('click', function() { goTo(parseInt(this.dataset.index)); });
     });
 
+    // Gallery featured image prev/next
+    var galPrev = document.getElementById('galPrev');
+    var galNext = document.getElementById('galNext');
+    if (galPrev) galPrev.addEventListener('click', function(e) { e.stopPropagation(); goTo(current - 1); });
+    if (galNext) galNext.addEventListener('click', function(e) { e.stopPropagation(); goTo(current + 1); });
+
+    // Fullscreen opens lightbox
+    var galFs = document.getElementById('galFullscreen');
+    if (galFs) galFs.addEventListener('click', function(e) { e.stopPropagation(); $('#tsdModal').modal('show'); });
+
+    // Click main gallery image opens lightbox
+    var featEl = document.getElementById('tgal-featured');
+    if (featEl) featEl.addEventListener('click', function(e) {
+        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'I') return;
+        $('#tsdModal').modal('show');
+    });
+
+    // Cover hero click opens lightbox
     var coverEl = document.getElementById('cover-img');
     if (coverEl) { coverEl.style.cursor = 'zoom-in'; coverEl.addEventListener('click', function() { $('#tsdModal').modal('show'); }); }
 
+    // Lightbox prev/next
     var prevBtn = document.getElementById('prevBtn');
     var nextBtn = document.getElementById('nextBtn');
-    if (prevBtn) prevBtn.addEventListener('click', function() { setActive(currentIdx - 1); });
-    if (nextBtn) nextBtn.addEventListener('click', function() { setActive(currentIdx + 1); });
+    if (prevBtn) prevBtn.addEventListener('click', function() { goTo(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { goTo(current + 1); });
+
+    // Keyboard arrow navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft')  goTo(current - 1);
+        if (e.key === 'ArrowRight') goTo(current + 1);
+    });
 })();
 </script>
 @endsection
