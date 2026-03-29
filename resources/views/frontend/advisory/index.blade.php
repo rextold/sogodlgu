@@ -301,7 +301,7 @@
                                     <span><i class="fa fa-calendar"></i> {{ date('F d, Y', strtotime($advisory->created_at)) }}</span>
                                     <span><i class="fa fa-eye"></i> {{ number_format($advisory->hits ?? 0) }} views</span>
                                 </div>
-                                <a href="{{ route('advisories.show', ['id' => $advisory->id, 'title' => $advisory->title]) }}" class="adv-read-more">
+                                <a href="{{ url('advisory', [$advisory->id, $advisory->title]) }}" class="adv-read-more">
                                     View Details <i class="fa fa-arrow-right"></i>
                                 </a>
                             </div>

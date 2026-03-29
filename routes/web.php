@@ -84,12 +84,6 @@ Route::prefix('news')->group(function () {
     // Route::get('/article/{id}/{article}', 'Frontend\NewsController@showArticle')->name('article.show');
 });
 
-//currently use
-Route::prefix('advisories')->group(function () {
-    Route::get('/', 'Frontend\AdvisoriesController@index')->name('advisories');
-    Route::get('/{id}/{title}', 'Frontend\AdvisoriesController@show')->name('advisories.show');
-});
-
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
