@@ -374,8 +374,6 @@
             {{-- ===== RIGHT SIDEBAR ===== --}}
             <div class="col-lg-4" data-aos="fade-left">
 
-                @include('frontend.widgets._transseal')
-
                 <div class="news-side-card">
                     <div class="nsc-header blue"><i class="fa fa-cloud"></i> &nbsp;Weather Updates</div>
                     <div class="nsc-body">
