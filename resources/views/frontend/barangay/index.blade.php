@@ -188,17 +188,17 @@
         <div class="bs-inner">
             <div class="bs-item">
                 <div class="bs-icon"><i class="fa fa-building-o"></i></div>
-                <div class="bs-value">{{ $barangays->count() }}</div>
+                <div class="bs-value">{{ $barangayofficials->pluck('barangay_id')->unique()->count() }}</div>
                 <div class="bs-label">Total Barangays</div>
             </div>
             <div class="bs-item">
                 <div class="bs-icon"><i class="fa fa-user"></i></div>
-                <div class="bs-value">{{ $barangayofficials->filter(function($o){ return stripos($o->position->name ?? '', 'captain') !== false; })->count() ?: $barangays->count() }}</div>
+                <div class="bs-value">{{ $barangayofficials->pluck('barangay_id')->unique()->count() }}</div>
                 <div class="bs-label">Barangay Captains</div>
             </div>
             <div class="bs-item">
                 <div class="bs-icon"><i class="fa fa-phone"></i></div>
-                <div class="bs-value">{{ $barangayofficials->filter(function($o){ return stripos($o->position->name ?? '', 'captain') !== false && !empty($o->contactnumber); })->count() ?: $barangayofficials->whereNotNull('contactnumber')->where('contactnumber','!=','')->count() }}</div>
+                <div class="bs-value">{{ $barangayofficials->filter(function($o){ return !empty($o->contactnumber); })->pluck('barangay_id')->unique()->count() }}</div>
                 <div class="bs-label">With Contact No.</div>
             </div>
             <div class="bs-item">
@@ -222,7 +222,7 @@
                 <div class="brgy-search-bar" data-aos="fade-up">
                     <span class="bsb-label"><i class="fa fa-search"></i> Search:</span>
                     <input type="text" id="brgySearch" placeholder="Type barangay name or captain..." oninput="filterBarangay()">
-                    <span class="bsb-count">Showing <span id="brgyCount">{{ $barangayofficials->count() }}</span> of {{ $barangayofficials->count() }} barangays</span>
+                    <span class="bsb-count">Showing <span id="brgyCount">{{ $barangayofficials->pluck('barangay_id')->unique()->count() }}</span> of {{ $barangayofficials->pluck('barangay_id')->unique()->count() }} barangays</span>
                 </div>
 
                 {{-- Officials Table --}}
