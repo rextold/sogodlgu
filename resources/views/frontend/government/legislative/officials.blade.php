@@ -161,7 +161,7 @@
 }
 .lc-photo-wrap img {
     width: 100%; height: 100%; object-fit: cover;
-    object-position: top center;
+    object-position: center 20%;
     transition: transform 0.4s ease;
 }
 .leo-card:hover .lc-photo-wrap img { transform: scale(1.06); }
@@ -259,7 +259,8 @@
 @media (max-width: 991px) {
     .leo-cards-grid { grid-template-columns: repeat(3, 1fr); }
     .leo-card.leo-card-featured { flex-direction: column; text-align: center; }
-    .leo-card.leo-card-featured .lc-photo-wrap { width: 100%; min-height: 220px; }
+    .leo-card.leo-card-featured .lc-photo-wrap { width: 100%; height: 280px; min-height: unset; }
+    .leo-card.leo-card-featured .lc-photo-wrap img { object-position: center 20%; }
     .leo-card.leo-card-featured .lc-meta { justify-content: center; }
 }
 @media (max-width: 767px) {
@@ -267,14 +268,20 @@
     .leo-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .leo-stats .ls-item { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid rgba(255,255,255,0.1); }
     .leo-stats .ls-item:nth-child(even) { border-right: none; }
-    .leo-card.leo-card-featured .lc-photo-wrap { min-height: 180px; }
+    /* Featured card: tall enough to show full face on mobile */
+    .leo-card.leo-card-featured .lc-photo-wrap { height: 260px; }
+    .leo-card.leo-card-featured .lc-photo-wrap img { object-position: center 15%; }
     .leo-card.leo-card-featured .lc-name { font-size: 1.05rem; }
-    .lc-photo-wrap { height: 160px; }
+    /* Regular cards */
+    .lc-photo-wrap:not(.leo-card-featured .lc-photo-wrap) { height: 160px; }
 }
 @media (max-width: 480px) {
     .leo-hero h1 { font-size: 1.1rem; }
     .leo-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-    .lc-photo-wrap { height: 140px; }
+    /* Featured card on small phones */
+    .leo-card.leo-card-featured .lc-photo-wrap { height: 230px; }
+    /* Regular cards */
+    .leo-card:not(.leo-card-featured) .lc-photo-wrap { height: 140px; }
     .lc-body { padding: 10px 9px 12px; }
     .lc-name { font-size: 0.82rem; }
 }
