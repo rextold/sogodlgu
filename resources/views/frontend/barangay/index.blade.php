@@ -278,11 +278,8 @@
             {{-- ===== SIDEBAR ===== --}}
             <div class="col-lg-3">
 
-                {{-- Transparency Seal --}}
-                @include('frontend.widgets._transseal')
-
                 {{-- Barangay Quick List --}}
-                <div class="brgy-side-card mt-3" data-aos="fade-left" data-aos-delay="60">
+                <div class="brgy-side-card" data-aos="fade-left" data-aos-delay="60">
                     <div class="bsc-header orange">
                         <i class="fa fa-th-list"></i> All Barangays
                     </div>
