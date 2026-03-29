@@ -203,6 +203,31 @@
 .news-nav-list li a:hover { background: #edf3fb; color: #0052a5; }
 .news-nav-list li a i { color: #0052a5; flex-shrink: 0; }
 
+/* ---- Filter / Search bar ---- */
+.news-filter-bar {
+    display: flex; align-items: center; gap: 10px;
+    background: #fff; border-radius: 10px;
+    padding: 8px 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+}
+.news-filter-bar .nfb-icon { color: #0052a5; font-size: 1rem; flex-shrink: 0; }
+.news-filter-bar input {
+    border: none; outline: none; flex: 1;
+    font-size: 0.88rem; color: #001f2d; background: transparent;
+}
+.news-filter-bar input::placeholder { color: #bbb; }
+.news-filter-bar .nfb-count {
+    font-size: 0.72rem; font-weight: 700; color: #fff;
+    background: #0052a5; padding: 2px 10px; border-radius: 20px;
+    white-space: nowrap;
+}
+.news-no-results {
+    display: none; text-align: center; padding: 32px 0;
+    color: #aaa; font-size: 0.88rem;
+}
+.news-no-results i { font-size: 2rem; display: block; margin-bottom: 8px; color: #ddd; }
+
 /* ---- Responsive ---- */
 @media (max-width: 991px) {
     .news-grid { grid-template-columns: 1fr 1fr; }
@@ -309,10 +334,16 @@
                     </div>
                 </div>
 
-                <div class="news-grid">
+                <div class="news-filter-bar" data-aos="fade-up">
+                    <span class="nfb-icon"><i class="fa fa-search"></i></span>
+                    <input type="text" id="newsSearchInput" placeholder="Search news by title..." oninput="filterNews()">
+                    <span class="nfb-count" id="newsCount">{{ $news->where(function($a){ return $a->category && $a->category->order != 2; })->count() }} articles</span>
+                </div>
+
+                <div class="news-grid" id="newsGrid">
                     @foreach($news as $idx => $article)
                         @if($article->category && $article->category->order != 2)
-                            <div class="ngrid-card" data-aos="fade-up" data-aos-delay="{{ min(($idx % 2) * 80, 160) }}">
+                            <div class="ngrid-card" data-aos="fade-up" data-aos-delay="{{ min(($idx % 2) * 80, 160) }}" data-title="{{ strtolower($article->title) }}">
                                 <div class="ngc-img-wrap">
                                     <div class="ngc-bg" style="background-image: url('{{ Voyager::image($article->image) }}');"></div>
                                     <span class="ngc-cat">{{ $article->category->name }}</span>
@@ -332,6 +363,10 @@
                             </div>
                         @endif
                     @endforeach
+                </div>
+                <div class="news-no-results" id="newsNoResults">
+                    <i class="fa fa-search"></i>
+                    No articles match your search.
                 </div>
 
             </div>
@@ -372,5 +407,25 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script>
+function filterNews() {
+    var query = document.getElementById('newsSearchInput').value.toLowerCase().trim();
+    var cards  = document.querySelectorAll('#newsGrid .ngrid-card');
+    var count  = 0;
+
+    cards.forEach(function(card) {
+        var title = (card.getAttribute('data-title') || '').toLowerCase();
+        var show  = !query || title.indexOf(query) !== -1;
+        card.style.display = show ? '' : 'none';
+        if (show) count++;
+    });
+
+    document.getElementById('newsCount').textContent = count + (count === 1 ? ' article' : ' articles');
+    document.getElementById('newsNoResults').style.display = (count === 0) ? 'block' : 'none';
+}
+</script>
+@endpush
 
 @endsection
