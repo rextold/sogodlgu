@@ -242,23 +242,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($barangayofficials as $i => $brgyofficial)
-                                <tr class="brgy-row" data-name="{{ strtolower($brgyofficial->barangay->name ?? '') }}" data-captain="{{ strtolower($brgyofficial->captain ?? '') }}">
+                                @foreach($barangays as $i => $brgy)
+                                @php $official = $barangayofficials->firstWhere('barangay_id', $brgy->id); @endphp
+                                <tr class="brgy-row" data-name="{{ strtolower($brgy->name ?? '') }}" data-captain="{{ strtolower($official->captain ?? '') }}">
                                     <td style="width:44px; text-align:center; color:#aaa; font-size:0.8rem;">{{ $i + 1 }}</td>
                                     <td>
                                         <div class="brgy-name">
                                             <span class="brgy-num">{{ $i + 1 }}</span>
-                                            {{ strtoupper($brgyofficial->barangay->name ?? 'N/A') }}
+                                            {{ strtoupper($brgy->name ?? 'N/A') }}
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="captain-name">{{ $brgyofficial->captain ?? 'N/A' }}</span>
+                                        <span class="captain-name">{{ $official->captain ?? 'N/A' }}</span>
                                     </td>
                                     <td>
-                                        @if($brgyofficial->contactnumber)
+                                        @if($official && $official->contactnumber)
                                             <span class="contact-badge">
                                                 <i class="fa fa-phone"></i>
-                                                {{ $brgyofficial->contactnumber }}
+                                                {{ $official->contactnumber }}
                                             </span>
                                         @else
                                             <span class="contact-badge none">
