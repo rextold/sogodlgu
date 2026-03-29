@@ -51,6 +51,7 @@
                                 </ul>
                             </li>
                             <!-- <li><a href="{{ route('events') }}">Events</a></li> -->
+                            <li><a href="{{ route('advisories') }}">Advisories</a></li>
                             <li><a href="{{ route('news') }}">News</a></li>
                             <li><a href="{{ route('tourism') }}">Tourism</a></li>
                             <li>
