@@ -61,7 +61,6 @@
                                     <!-- <li><a href="">Former Key officials</a></li> -->
                                 </ul>
                             </li>
-                            <li><a href="{{ route('news.covid19') }}">COVID-19 Updates</a></li>
                             <li>
                                 <button id="acc-button" type="button">
                                     <span class="show-for-sr">Accessibility Button</span>

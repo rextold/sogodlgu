@@ -82,7 +82,6 @@ Route::prefix('posts')->group(function () {
 Route::prefix('news')->group(function () {
     Route::get('/', 'Frontend\NewsController@index')->name('news');
     // Route::get('/article/{id}/{article}', 'Frontend\NewsController@showArticle')->name('article.show');
-    Route::get('/covid-19 updates', 'Frontend\NewsController@showC19Updates')->name('news.covid19');
 });
 
 
