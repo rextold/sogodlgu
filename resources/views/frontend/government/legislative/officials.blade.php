@@ -132,10 +132,13 @@
     padding: 22px 24px;
     display: flex; flex-direction: column; justify-content: center;
 }
-.leo-card.leo-card-featured .lc-name { font-size: 1.3rem; }
+.leo-card.leo-card-featured .lc-name { font-size: 1.3rem; display: block; width: 100%; }
 .leo-card.leo-card-featured .lc-pos-badge {
     background: linear-gradient(135deg, #0052a5, #003d7a);
     color: #fff; border: none; font-size: 0.8rem; padding: 5px 16px;
+    align-self: flex-start;
+    display: inline-block;
+    margin-top: 4px;
 }
 .leo-card.leo-card-featured .lc-desc {
     font-size: 0.85rem; color: #555; line-height: 1.65; margin-top: 10px;
