@@ -131,6 +131,21 @@
 .service-card.sc-red .sc-label { color: #b92c2c; }
 .service-card.sc-red::before { background: #b92c2c; }
 
+/* ---- News Plain Section ---- */
+.hn-plain-section {
+    margin-bottom: 1.4rem;
+}
+.hn-section-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 1.05rem; font-weight: 800; color: #001f2d;
+    margin-bottom: 14px; padding-bottom: 10px;
+    border-bottom: 2px solid #eaeff8;
+}
+.hn-title-bar {
+    display: inline-block; width: 4px; height: 20px;
+    background: #ea5211; border-radius: 3px; flex-shrink: 0;
+}
+
 /* ---- News Cards ---- */
 .news-grid {
     display: grid;
@@ -453,12 +468,13 @@
         {{-- MAIN COLUMN --}}
         <div class="col-lg-9">
             {{-- Featured News --}}
-            <div class="home-card" data-aos="fade-up">
-                <div class="hcard-header orange">
-                    <i class="fa fa-newspaper-o"></i> Latest News &amp; Announcements
+            <div class="hn-plain-section" data-aos="fade-up">
+                <div class="hn-section-title">
+                    <span class="hn-title-bar"></span>
+                    <i class="fa fa-newspaper-o" style="color:#ea5211;"></i> Latest News &amp; Announcements
                 </div>
                 @include('frontend.widgets._newsticker')
-                <div class="news-see-more">
+                <div class="news-see-more" style="border-top:1px solid #f0f0f0;">
                     <a href="{{ route('news') }}"><i class="fa fa-arrow-right"></i> See All News</a>
                 </div>
             </div>
