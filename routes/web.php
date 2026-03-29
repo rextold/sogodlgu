@@ -85,6 +85,8 @@ Route::prefix('news')->group(function () {
 });
 
 
+Route::get('/search', 'Frontend\SearchController@index')->name('search');
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

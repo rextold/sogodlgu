@@ -439,6 +439,73 @@
             /* Compact the navbar on phone — one tap opens menu */
             #main-nav .top-bar { padding: 6px 12px; }
         }
+
+        /* ============================================================
+           SITE-WIDE SEARCH OVERLAY
+        ============================================================ */
+        .search-overlay {
+            display: none; position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 99999;
+            background: rgba(0,15,35,0.93);
+            backdrop-filter: blur(6px);
+            align-items: flex-start; justify-content: center;
+            padding-top: 80px; padding-left: 16px; padding-right: 16px;
+        }
+        .search-overlay.sov-active { display: flex; }
+        .search-overlay-box { width: 100%; max-width: 680px; }
+        .sov-label {
+            color: rgba(255,255,255,0.55);
+            font-size: 0.78rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+        .sov-form {
+            display: flex; align-items: center;
+            background: #fff; border-radius: 50px;
+            padding: 6px 6px 6px 22px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.4);
+        }
+        .sov-form input {
+            flex: 1; border: none; outline: none;
+            font-size: 1.15rem; color: #001f2d; background: transparent;
+            font-family: 'Inter', sans-serif;
+        }
+        .sov-form input::placeholder { color: #bbb; }
+        .sov-form button[type='submit'] {
+            background: linear-gradient(135deg, #ea5211, #c9460e);
+            color: #fff; border: none; border-radius: 50px;
+            padding: 10px 22px; font-size: 0.88rem; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; gap: 6px;
+            transition: opacity 0.2s;
+        }
+        .sov-form button[type='submit']:hover { opacity: 0.88; }
+        .sov-close {
+            position: fixed; top: 22px; right: 28px;
+            background: none; border: none;
+            color: rgba(255,255,255,0.6); font-size: 2rem;
+            cursor: pointer; line-height: 1; transition: color 0.2s;
+        }
+        .sov-close:hover { color: #ea5211; }
+        .sov-hints {
+            margin-top: 18px;
+            display: flex; flex-wrap: wrap; gap: 8px;
+        }
+        .sov-hint {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.75);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 20px; padding: 4px 14px;
+            font-size: 0.76rem; cursor: pointer;
+            transition: background 0.2s;
+        }
+        .sov-hint:hover { background: rgba(234,82,17,0.5); color: #fff; }
+        /* Search button in navbar */
+        #site-search-btn {
+            background: none; border: none; cursor: pointer;
+            color: #fff; padding: 0 8px; vertical-align: middle;
+        }
+        #site-search-btn:hover { color: #f4c542; }
         </style>
 
 
@@ -525,6 +592,56 @@
             </div>
         </div>
     </div>
+
+{{-- ===== SITE-WIDE SEARCH OVERLAY ===== --}}
+<div class="search-overlay" id="searchOverlay" onclick="closeSearchOnBackdrop(event)">
+    <div class="search-overlay-box">
+        <div class="sov-label"><i class="fa fa-search"></i>&nbsp; Search the Sogod LGU Website</div>
+        <form class="sov-form" method="GET" action="{{ route('search') }}">
+            <input type="text" name="q" id="searchOverlayInput"
+                   placeholder="Search news, ordinances, events, tourism..."
+                   autocomplete="off" maxlength="100">
+            <button type="submit"><i class="fa fa-search"></i> Search</button>
+        </form>
+        <div class="sov-hints">
+            <span class="sov-hint" onclick="sovSubmit(this,'ordinances')">Ordinances</span>
+            <span class="sov-hint" onclick="sovSubmit(this,'resolutions')">Resolutions</span>
+            <span class="sov-hint" onclick="sovSubmit(this,'news')">News</span>
+            <span class="sov-hint" onclick="sovSubmit(this,'events')">Events</span>
+            <span class="sov-hint" onclick="sovSubmit(this,'tourism')">Tourism</span>
+            <span class="sov-hint" onclick="sovSubmit(this,'permit')">Permits</span>
+            <span class="sov-hint" onclick="sovSubmit(this,'barangay')">Barangay</span>
+        </div>
+    </div>
+    <button class="sov-close" onclick="toggleSearchOverlay()" title="Close (Esc)">&times;</button>
+</div>
+<script>
+function toggleSearchOverlay() {
+    var el = document.getElementById('searchOverlay');
+    el.classList.toggle('sov-active');
+    if (el.classList.contains('sov-active')) {
+        setTimeout(function(){ document.getElementById('searchOverlayInput').focus(); }, 80);
+    }
+}
+function closeSearchOnBackdrop(e) {
+    if (e.target === document.getElementById('searchOverlay')) toggleSearchOverlay();
+}
+function sovSubmit(btn, term) {
+    var input = document.getElementById('searchOverlayInput');
+    input.value = term;
+    input.closest('form').submit();
+}
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        var el = document.getElementById('searchOverlay');
+        if (el.classList.contains('sov-active')) toggleSearchOverlay();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        toggleSearchOverlay();
+    }
+});
+</script>
 
 <!-- main -->
     <div id="main-content">

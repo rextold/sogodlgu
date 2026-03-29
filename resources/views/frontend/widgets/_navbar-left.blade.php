@@ -62,6 +62,12 @@
                                 </ul>
                             </li>
                             <li>
+                                <button id="site-search-btn" type="button" title="Search (Ctrl+K)" onclick="toggleSearchOverlay()">
+                                    <span class="show-for-sr">Search</span>
+                                    <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+                                </button>
+                            </li>
+                            <li>
                                 <button id="acc-button" type="button">
                                     <span class="show-for-sr">Accessibility Button</span>
                                     <i class="fa fa-universal-access fa-2x" aria-hidden="true"></i>
