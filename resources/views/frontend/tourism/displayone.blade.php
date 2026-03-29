@@ -72,43 +72,6 @@
 /* ---- Page Wrap ---- */
 .tsd-wrap { background: #f4f6f9; padding: 32px 0 50px; }
 
-/* ---- Main content card ---- */
-.tsd-main-card {
-    background: #fff; border-radius: 14px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    overflow: hidden; margin-bottom: 22px;
-}
-.tsd-main-card .tmc-head {
-    background: linear-gradient(135deg, #001f2d, #003d7a 60%, #0052a5);
-    padding: 14px 22px;
-    display: flex; align-items: center; gap: 10px;
-    border-bottom: 3px solid #ea5211;
-}
-.tsd-main-card .tmc-head .tmc-icon {
-    width: 36px; height: 36px; border-radius: 8px;
-    background: rgba(234,82,17,0.85);
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 1rem; flex-shrink: 0;
-}
-.tsd-main-card .tmc-head h2 { font-size: 1rem; font-weight: 800; color: #fff; margin: 0; }
-.tsd-main-card .tmc-body {
-    padding: 24px 26px;
-    font-size: 0.93rem; color: #333; line-height: 1.85;
-}
-.tsd-main-card .tmc-body h2, .tsd-main-card .tmc-body h3 { color: #0052a5; font-weight: 700; margin-top: 20px; }
-.tsd-main-card .tmc-body h4 { color: #001f2d; font-weight: 700; }
-.tsd-main-card .tmc-body p { margin-bottom: 0.9rem; }
-.tsd-main-card .tmc-body img { max-width: 100%; border-radius: 8px; }
-.tsd-main-card .tmc-body ul, .tsd-main-card .tmc-body ol { padding-left: 20px; }
-.tsd-main-card .tmc-body li { margin-bottom: 5px; }
-.tsd-main-card .tmc-body a { color: #0052a5; }
-.tsd-main-card .tmc-body a:hover { color: #ea5211; }
-.tsd-main-card .tmc-body blockquote {
-    border-left: 4px solid #ea5211; background: #fff8f5;
-    padding: 12px 16px; border-radius: 0 8px 8px 0;
-    margin: 16px 0; font-style: italic; color: #555;
-}
-
 /* ---- Gallery ---- */
 .tsd-gallery-card {
     background: #fff; border-radius: 14px;
@@ -254,6 +217,44 @@
 #tsdModal .modal-prev { left: -55px; }
 #tsdModal .modal-next { right: -55px; }
 
+/* ---- About section (no card) ---- */
+.tsd-about-section { margin-bottom: 28px; }
+.tsd-section-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 1.15rem; font-weight: 800; color: #001f2d;
+    margin-bottom: 14px; padding-bottom: 10px;
+    border-bottom: 2px solid #eaeff8;
+}
+.tsd-title-bar {
+    display: inline-block; width: 4px; height: 22px;
+    background: #0052a5; border-radius: 3px; flex-shrink: 0;
+}
+.tsd-about-body {
+    font-size: 0.93rem; color: #444; line-height: 1.85;
+}
+.tsd-about-body h2, .tsd-about-body h3 { color: #0052a5; font-weight: 700; margin-top: 18px; }
+.tsd-about-body h4 { color: #001f2d; font-weight: 700; }
+.tsd-about-body p { margin-bottom: 0.9rem; }
+.tsd-about-body img { max-width: 100%; border-radius: 8px; }
+.tsd-about-body ul, .tsd-about-body ol { padding-left: 20px; }
+.tsd-about-body li { margin-bottom: 5px; }
+.tsd-about-body a { color: #0052a5; }
+.tsd-about-body a:hover { color: #ea5211; }
+.tsd-about-body blockquote {
+    border-left: 4px solid #ea5211; background: #fff8f5;
+    padding: 12px 16px; border-radius: 0 8px 8px 0;
+    margin: 16px 0; font-style: italic; color: #555;
+}
+
+/* ---- Map section (no card) ---- */
+.tsd-map-section { margin-bottom: 28px; }
+.tsd-map-wrap {
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    height: 280px;
+}
+.tsd-map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
 /* ---- Responsive ---- */
 @media (max-width: 991px) {
     .tsd-cover { height: 340px; }
@@ -263,7 +264,6 @@
 @media (max-width: 767px) {
     .tsd-cover { height: 260px; }
     .tsd-cover-content h1 { font-size: 1.4rem; }
-    .tsd-main-card .tmc-body { padding: 16px 14px; }
     .tgal-featured-img { height: 220px; }
     .tgal-feat-nav { opacity: 1; }
     #tsdModal .modal-prev { left: 0; }
@@ -316,13 +316,13 @@
             {{-- LEFT: About + Gallery ---- --}}
             <div class="col-lg-8" data-aos="fade-up">
 
-                {{-- About Card --}}
-                <div class="tsd-main-card">
-                    <div class="tmc-head">
-                        <div class="tmc-icon"><i class="fa fa-info"></i></div>
-                        <h2>About {{ $tspot->title }}</h2>
-                    </div>
-                    <div class="tmc-body">
+                {{-- About --}}
+                <div class="tsd-about-section" data-aos="fade-up">
+                    <h2 class="tsd-section-title">
+                        <span class="tsd-title-bar"></span>
+                        About {{ $tspot->title }}
+                    </h2>
+                    <div class="tsd-about-body">
                         @if($tspot->body)
                             {!! $tspot->body !!}
                         @else
@@ -382,10 +382,28 @@
                 </div>
                 @endif
 
+                {{-- Location Map --}}
+                <div class="tsd-map-section" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="tsd-section-title">
+                        <span class="tsd-title-bar"></span>
+                        Location
+                    </h2>
+                    <div class="tsd-map-wrap">
+                        <iframe
+                            src="https://maps.google.com/maps?q={{ urlencode($tspot->title . ', Sogod, Southern Leyte') }}&t=k&z=13&ie=UTF8&iwloc=&output=embed"
+                            allowfullscreen loading="lazy"
+                            title="{{ $tspot->title }} Location">
+                        </iframe>
+                    </div>
+                </div>
+
                 {{-- Share --}}
-                <div class="tsd-side-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="tsc-head orange"><i class="fa fa-share-alt"></i> Share this Spot</div>
-                    <div class="tsc-body">
+                <div class="tsd-about-section" data-aos="fade-up" data-aos-delay="120" style="margin-bottom:8px;">
+                    <h2 class="tsd-section-title">
+                        <span class="tsd-title-bar" style="background:#ea5211;"></span>
+                        Share this Spot
+                    </h2>
+                    <div class="tsd-about-body" style="padding-top:4px;">
                         @include('frontend.widgets._sharethis')
                     </div>
                 </div>
