@@ -350,11 +350,6 @@
             </div>
             @endif
             <div class="ls-item">
-                <div class="ls-icon"><i class="fa fa-calendar"></i></div>
-                <div class="ls-value">2022</div>
-                <div class="ls-label">Term Start</div>
-            </div>
-            <div class="ls-item">
                 <div class="ls-icon"><i class="fa fa-map-marker"></i></div>
                 <div class="ls-value">Sogod</div>
                 <div class="ls-label">So. Leyte</div>
@@ -419,7 +414,7 @@
                                 @endif
                                 <div class="lc-meta">
                                     <div class="lc-meta-item"><i class="fa fa-map-marker"></i> Sogod, Southern Leyte</div>
-                                    <div class="lc-meta-item"><i class="fa fa-calendar"></i> Term: 2022â€“2025</div>
+
                                 </div>
                             </div>
                         </div>
