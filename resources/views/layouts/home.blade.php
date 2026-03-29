@@ -154,7 +154,7 @@
             box-shadow: 0 3px 12px rgba(0,0,0,0.35);
         }
         .masthead .logo-img {
-            width: 130px;
+            width: 242px;
             height: 130px;
             object-fit: contain;
             filter: drop-shadow(0 3px 10px rgba(0,0,0,0.45));
