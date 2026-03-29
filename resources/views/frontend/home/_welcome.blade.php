@@ -139,9 +139,6 @@
             municipality we are privileged to call home. Our administration remains committed to transparent, accountable,
             and people-centered governance — always in service of every Sogodnon.
         </p>
-        <a href="{{ route('about') }}" class="mw-read-more">
-            <i class="fa fa-arrow-right"></i> Read Full Message
-        </a>
     </div>
 </div>
   <!-- 
