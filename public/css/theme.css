@@ -30,7 +30,7 @@ ul.is-dropdown-submenu li a{color:#0052a5 !important;}
 ul.is-dropdown-submenu li:hover{background:#f0f4fa !important;}
 ul.is-dropdown-submenu li:hover a{color:#ea5211 !important;}
 
-#acc-button{padding:0 1rem; background:transparent;}
+#acc-button{padding:0 1rem; background:transparent; color:#fff; border:none; cursor:pointer;}
 #acc-widget{min-width:inherit;}
 #acc-widget li a i{margin:0; padding:0; color:#fff;}
 #acc-widget li a{margin:0; padding:1rem; width:100%;}
