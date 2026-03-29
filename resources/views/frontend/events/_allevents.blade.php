@@ -14,7 +14,7 @@
                     </a>
                     <figcaption class="venue">
                         <div>{{ $event->venue }}</div>
-                        <div>{{ $event->startingdate }} {{ ($event->startingdate)? 'and more':'' }}</div>
+                        <div>{{ $event->event_date }}</div>
                     </figcaption>
                 </td>
             </tr>

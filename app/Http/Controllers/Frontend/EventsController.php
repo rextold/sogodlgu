@@ -23,7 +23,7 @@ class EventsController extends Controller
     }
     public function showForm()
     {
-        $events = Events::orderBy('startingdate')->paginate(15);
+        $events = Events::orderBy('event_date')->paginate(15);
         return view('frontend/events/index',[
             'page' => 'Events',
             'title' =>'Events | List of Events',

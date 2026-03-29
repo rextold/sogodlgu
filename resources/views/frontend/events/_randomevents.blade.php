@@ -23,7 +23,7 @@
                         </a></h6>
                         @{{ event.venue }}
                         <p>
-                            @{{ event.startingdate }} 
+                            @{{ event.event_date }} 
                             <span ng-if="event.enddate"> and more</span>
                         </p>
                     </td>
