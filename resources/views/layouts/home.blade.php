@@ -217,8 +217,9 @@
 
         /* ---- Quick Services Bar ---- */
         .quick-services-bar {
-            background: linear-gradient(135deg, var(--sogod-blue-dark), var(--sogod-blue));
+            background: linear-gradient(135deg, var(--sogod-blue-dark) 0%, var(--sogod-blue) 55%, #c9460e 100%);
             padding: 0;
+            border-top: 2px solid rgba(234,82,17,0.55);
         }
         .quick-services-bar .qs-inner {
             display: flex;
