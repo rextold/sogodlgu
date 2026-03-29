@@ -10,7 +10,7 @@
 /* ---- Page Hero ---- */
 .bp-hero {
     background: linear-gradient(135deg, #001f2d 0%, #003d7a 50%, #0052a5 100%);
-    padding: 40px 0 32px;
+    padding: 18px 0 14px;
     position: relative;
     overflow: hidden;
 }
@@ -27,7 +27,7 @@
     background: linear-gradient(to right, #ea5211, #f4c542, #ea5211);
 }
 .bp-hero .hero-icon {
-    font-size: 3rem; color: rgba(244,197,66,0.6); margin-bottom: 10px;
+    font-size: 1.8rem; color: rgba(244,197,66,0.6); margin-bottom: 4px;
 }
 .bp-hero .hero-tag {
     display: inline-block;
@@ -37,15 +37,15 @@
     margin-bottom: 8px;
 }
 .bp-hero h1 {
-    font-size: 2rem; font-weight: 900; color: #fff;
-    margin-bottom: 6px; line-height: 1.2;
+    font-size: 1.35rem; font-weight: 900; color: #fff;
+    margin-bottom: 4px; line-height: 1.2;
 }
 .bp-hero .hero-sub {
     font-size: 0.92rem; color: rgba(255,255,255,0.75);
 }
 .bp-hero .bp-breadcrumb {
     display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
-    margin-top: 16px;
+    margin-top: 8px;
 }
 .bp-hero .bp-breadcrumb a,
 .bp-hero .bp-breadcrumb span {
