@@ -50,7 +50,7 @@
                                 @if($idx === 0)
                                     <div class="carousel-item col-md-3 {{ $count === 0 ? 'active' : '' }}">
                                         <a href="{{ route('tourism.tourist_spot',['id'=>$feat->id,'name'=>$feat->title]) }}">
-                                            <img src="{{ Voyager::image($img) }}" class="img-fluid img-thumbnail" style="max-height:200px;" alt="{{ $feat->title }}">
+                                            <img src="{{ Voyager::image($img) }}" class="img-fluid img-thumbnail" style="width:100%; height:180px; object-fit:cover; max-height:180px;" alt="{{ $feat->title }}">
                                             <div class="mt-2 text-truncate">{{ $feat->title }}</div>
                                         </a>
                                     </div>

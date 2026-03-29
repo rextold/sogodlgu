@@ -133,9 +133,10 @@
             filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
         }
         .masthead .logo-img {
-            max-width: 90px;
-            height: auto;
-            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+            width: 130px;
+            height: 130px;
+            object-fit: contain;
+            filter: drop-shadow(0 3px 10px rgba(0,0,0,0.45));
         }
         .masthead .lgu-title-block {
             display: flex;
@@ -143,7 +144,7 @@
             justify-content: center;
         }
         .masthead .lgu-title-block .lgu-name {
-            font-size: 1.35rem;
+            font-size: 1.55rem;
             font-weight: 800;
             color: #fff;
             letter-spacing: 1px;
@@ -220,13 +221,13 @@
 
         /* Tablet (≤ 991px) */
         @media (max-width: 991px) {
-            .masthead .lgu-title-block .lgu-name { font-size: 1.1rem; }
+            .masthead .lgu-title-block .lgu-name { font-size: 1.25rem; }
             .masthead .masthead-inner { padding: 0.8rem 1rem; }
         }
 
         /* Mobile (≤ 767px) */
         @media (max-width: 767px) {
-            .masthead .logo-img { max-width: 52px; }
+            .masthead .logo-img { width: 90px; height: 90px; }
             .masthead .header-img { display: none !important; }
             .masthead .lgu-title-block .lgu-name { font-size: 0.95rem; }
             .masthead .lgu-title-block { gap: 2px; }
@@ -339,7 +340,7 @@
                     <img src="{{ asset('images/logo/logo2.png') }}" class="logo-img" alt="Sogod LGU Logo">
                     <div class="lgu-title-block mr-3">
                         <div class="lgu-name">Municipal Government</div>
-                        <div class="lgu-name" style="font-size:1.6rem;">of Sogod</div>
+                        <div class="lgu-name" style="font-size:1.9rem;">of Sogod</div>
                         <div class="lgu-tagline"><i class="fa fa-map-marker"></i> &nbsp;Southern Leyte, Philippines</div>
                     </div>
                     @if($img = App\PageHeader::where("status",2)->first())
