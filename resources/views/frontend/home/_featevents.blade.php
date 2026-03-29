@@ -95,12 +95,22 @@
 
         @if(!$hasUpcoming)
             <li class="list-group-item bg-transparent p-0">
-                <div class="event-no-upcoming">No upcoming or current events</div>
+                <div class="event-no-upcoming">
+                    <i class="fa fa-calendar-o" style="font-size:1.6rem; color:#ccc; display:block; margin-bottom:6px;"></i>
+                    No upcoming events at this time.
+                </div>
             </li>
         @endif
     @else
         <li class="list-group-item bg-transparent p-0">
-            <div class="event-no-upcoming">No events</div>
+            <div class="event-no-upcoming">No events found.</div>
         </li>
     @endif
 </ul>
+<div style="text-align:center; padding: 10px 0 4px;">
+    <a href="{{ route('events') }}" style="display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#186152,#0e3d32); color:#fff; font-size:0.8rem; font-weight:700; padding:7px 20px; border-radius:25px; text-decoration:none; transition:background 0.25s, transform 0.2s; box-shadow:0 3px 8px rgba(24,97,82,0.3);"
+       onmouseover="this.style.background='linear-gradient(135deg,#0052a5,#003d7a)'; this.style.transform='translateY(-2px)'"
+       onmouseout="this.style.background='linear-gradient(135deg,#186152,#0e3d32)'; this.style.transform='none'">
+        <i class="fa fa-calendar-check-o"></i> View All Events
+    </a>
+</div>
