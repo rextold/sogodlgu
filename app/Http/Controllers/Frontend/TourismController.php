@@ -20,8 +20,12 @@ class TourismController extends Controller
     }
     public function tourist_spot(Request $request){
 
-        $tspot = Touristspot::where('id',$request->id)->first();
- 
+        $tspot = TouristSpot::where('title', $request->name)->first();
+
+        if (!$tspot) {
+            abort(404);
+        }
+
         return view('frontend/tourism/displayone',[
             'page' => $tspot->title,
             'title' =>'Tourism | Sogod Southern Leyte',
