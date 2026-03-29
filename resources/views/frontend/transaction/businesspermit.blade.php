@@ -59,38 +59,40 @@
 /* ---- Layout ---- */
 .bp-wrap { background: #f4f6f9; padding: 32px 0 40px; }
 
-/* ---- CMS Content Card ---- */
-.bp-content-card {
-    background: #fff; border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    overflow: hidden; margin-bottom: 24px;
+/* ---- Plain Content (no card) ---- */
+.bp-plain-content { margin-bottom: 24px; }
+.bp-content-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 1.15rem; font-weight: 800; color: #001f2d;
+    margin-bottom: 16px; padding-bottom: 10px;
+    border-bottom: 2px solid #eaeff8;
 }
-.bp-content-card .bpcc-header {
-    background: linear-gradient(135deg, #001f2d, #003d7a 60%, #ea5211);
-    padding: 12px 20px;
-    display: flex; align-items: center; gap: 9px;
-    color: #fff; font-weight: 700; font-size: 0.95rem;
-    border-bottom: 3px solid #ea5211;
+.bp-title-bar {
+    display: inline-block; width: 4px; height: 22px;
+    background: #0052a5; border-radius: 3px; flex-shrink: 0;
 }
-.bp-content-card .bpcc-body {
-    padding: 20px 24px;
-    font-size: 0.92rem; color: #444; line-height: 1.75;
+.bp-content-body {
+    font-size: 0.93rem; color: #444; line-height: 1.85;
 }
-.bp-content-card .bpcc-body h2,
-.bp-content-card .bpcc-body h3,
-.bp-content-card .bpcc-body h4 { color: #0052a5; font-weight: 700; margin-top: 18px; }
-.bp-content-card .bpcc-body ul,
-.bp-content-card .bpcc-body ol { padding-left: 20px; }
-.bp-content-card .bpcc-body li { margin-bottom: 5px; }
-.bp-content-card .bpcc-body table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-.bp-content-card .bpcc-body table th {
+.bp-content-body h2, .bp-content-body h3 { color: #0052a5; font-weight: 700; margin-top: 18px; }
+.bp-content-body h4 { color: #001f2d; font-weight: 700; }
+.bp-content-body p { margin-bottom: 0.9rem; }
+.bp-content-body ul, .bp-content-body ol { padding-left: 22px; }
+.bp-content-body li { margin-bottom: 5px; }
+.bp-content-body table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.bp-content-body table th {
     background: #0052a5; color: #fff; padding: 8px 12px;
     font-size: 0.85rem; text-align: left;
 }
-.bp-content-card .bpcc-body table td {
+.bp-content-body table td {
     padding: 8px 12px; border-bottom: 1px solid #f0f0f0; font-size: 0.85rem;
 }
-.bp-content-card .bpcc-body table tr:hover td { background: #fdf5f1; }
+.bp-content-body table tr:hover td { background: #fdf5f1; }
+.bp-content-body blockquote {
+    border-left: 4px solid #ea5211; background: #fff8f5;
+    padding: 12px 16px; border-radius: 0 8px 8px 0;
+    margin: 16px 0; font-style: italic; color: #555;
+}
 
 /* ---- No Content Notice ---- */
 .bp-no-content {
@@ -164,7 +166,6 @@
     .bp-hero .hero-icon { font-size: 2rem; margin-bottom: 6px; }
     .bp-hero h1 { font-size: 1.35rem; }
     .bp-hero .hero-sub { font-size: 0.84rem; }
-    .bp-content-card .bpcc-body { padding: 14px 16px; }
     .bp-wrap .row { flex-direction: column; }
     .bp-wrap .col-md-8,
     .bp-wrap .col-md-4 { max-width: 100%; flex: 0 0 100%; }
@@ -173,7 +174,6 @@
 @media (max-width: 480px) {
     .bp-hero h1 { font-size: 1.15rem; }
     .bp-hero .hero-tag { font-size: 0.65rem; }
-    .bp-content-card .bpcc-header { font-size: 0.88rem; padding: 10px 14px; }
 }
 </style>
 
@@ -204,11 +204,14 @@
 
                 {{-- CMS Page Content — edit via Voyager Admin > Pages > slug: business-permit --}}
                 @if($cmsPage && $cmsPage->body)
-                <div class="bp-content-card" data-aos="fade-up">
-                    <div class="bpcc-header">
-                        <i class="fa fa-file-text"></i> {{ $cmsPage->title }}
-                    </div>
-                    <div class="bpcc-body">
+                <div class="bp-plain-content" data-aos="fade-up">
+                    @if($cmsPage->title)
+                        <h2 class="bp-content-title">
+                            <span class="bp-title-bar"></span>
+                            {{ $cmsPage->title }}
+                        </h2>
+                    @endif
+                    <div class="bp-content-body">
                         {!! $cmsPage->body !!}
                     </div>
                 </div>
