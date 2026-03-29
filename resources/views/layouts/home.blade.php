@@ -142,6 +142,17 @@
             border-radius: 8px;
             filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
         }
+        /* Mobile header image — full-width strip below logo row */
+        .masthead .header-img-mobile {
+            display: none;
+            width: 100%;
+            max-height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+            filter: brightness(0.9);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.35);
+        }
         .masthead .logo-img {
             width: 130px;
             height: 130px;
@@ -242,6 +253,7 @@
         @media (max-width: 767px) {
             .masthead .logo-img { width: 90px; height: 90px; }
             .masthead .header-img { display: none !important; }
+            .masthead .header-img-mobile { display: block; }
             .masthead .lgu-title-block .lgu-name { font-size: 0.95rem; }
             .masthead .lgu-title-block { gap: 2px; }
             .masthead .dateclock { font-size: 0.85rem; padding: 0.45rem 0.8rem; border-radius: 8px; }
@@ -473,6 +485,9 @@
                                 <img src="{{ Voyager::image($headerImg->image) }}" class="header-img d-none d-lg-block" alt="Page Header">
                             @endif
                         </div>
+                        @if($headerImg)
+                            <img src="{{ Voyager::image($headerImg->image) }}" class="header-img-mobile" alt="Page Header">
+                        @endif
                     </div>
                     <!-- Right: Clock -->
                     <div class="col-12 col-md-2 text-right mt-2 mt-md-0">
