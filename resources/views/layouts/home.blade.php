@@ -113,7 +113,7 @@
             position: relative;
             padding: 0;
             overflow: hidden;
-            background: linear-gradient(135deg, var(--sogod-blue-dark) 0%, var(--sogod-blue) 40%, var(--sogod-orange) 100%);
+            background: linear-gradient(135deg, var(--sogod-orange-dark) 0%, var(--sogod-orange) 50%, var(--sogod-navy) 100%);
         }
         .masthead .header-bg {
             position: absolute;
@@ -128,7 +128,7 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(0,61,122,0.82) 0%, rgba(0,82,165,0.6) 50%, rgba(234,82,17,0.55) 100%);
+            background: linear-gradient(135deg, rgba(201,70,14,0.75) 0%, rgba(234,82,17,0.55) 50%, rgba(0,31,45,0.65) 100%);
             z-index: 1;
         }
         .masthead .masthead-inner {
@@ -203,7 +203,7 @@
 
         /* ---- Quick Services Bar ---- */
         .quick-services-bar {
-            background: linear-gradient(135deg, var(--sogod-blue-dark), var(--sogod-blue));
+            background: linear-gradient(135deg, var(--sogod-orange-dark), var(--sogod-orange));
             padding: 0;
         }
         .quick-services-bar .qs-inner {
@@ -235,7 +235,7 @@
             color: var(--sogod-gold);
         }
         .quick-services-bar .qs-item:hover {
-            background: var(--sogod-orange);
+            background: var(--sogod-blue-dark);
             transform: translateY(-2px);
             color: #fff;
         }
