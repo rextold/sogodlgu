@@ -147,8 +147,9 @@ class GovernmentController extends Controller
 
         $ordinance = Ordinance::where('id', $request->id)
                 ->first();
+        $ordinance->increment('views');
         $ordinance->file =(json_decode($ordinance->file))[0]->download_link;
-        return view('frontend/government/legislative/_showordinance',[
+        return view('frontend/government/legislative/_showordinance',['
             'page' => 'ordinances',
             'ordinance' => $ordinance,
             'pageHeading' => $request->title,
@@ -176,9 +177,10 @@ class GovernmentController extends Controller
     public function show_resolution(Request $request){
 
         $resolution = Resolution::where('id', $request->id)
-                ->first(); 
+                ->first();
+        $resolution->increment('views');
         $resolution->file =(json_decode($resolution->file))[0]->download_link;
-        return view('frontend/government/legislative/_showresolution',[
+        return view('frontend/government/legislative/_showresolution',['
             'page' => 'resolutions',
             'resolution' => $resolution,
             'pageHeading' => $request->title,
