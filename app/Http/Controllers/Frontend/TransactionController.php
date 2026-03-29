@@ -12,10 +12,15 @@ class TransactionController extends Controller
         $cmsPage = Page::where('slug', 'business-permit')
                         ->where('status', 'ACTIVE')
                         ->first();
+        // Admin sets the correct eBPLS URL in Voyager: Pages > slug "ebpls-link" > Body field
+        $ebplsUrl = Page::where('slug', 'ebpls-link')
+                        ->where('status', 'ACTIVE')
+                        ->value('body');
         return view('frontend/transaction/businesspermit',[
             'page'     => 'Business Permits',
             'title'    => 'Transaction | Business Permits',
             'cmsPage'  => $cmsPage,
+            'ebplsUrl' => $ebplsUrl ? trim(strip_tags($ebplsUrl)) : null,
         ]);
     }
 }
