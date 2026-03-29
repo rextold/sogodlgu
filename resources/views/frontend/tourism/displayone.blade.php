@@ -246,15 +246,6 @@
     margin: 16px 0; font-style: italic; color: #555;
 }
 
-/* ---- Map section (no card) ---- */
-.tsd-map-section { margin-bottom: 28px; }
-.tsd-map-wrap {
-    border-radius: 12px; overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-    height: 280px;
-}
-.tsd-map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
-
 /* ---- Responsive ---- */
 @media (max-width: 991px) {
     .tsd-cover { height: 340px; }
@@ -381,21 +372,6 @@
                     </div>
                 </div>
                 @endif
-
-                {{-- Location Map --}}
-                <div class="tsd-map-section" data-aos="fade-up" data-aos-delay="100">
-                    <h2 class="tsd-section-title">
-                        <span class="tsd-title-bar"></span>
-                        Location
-                    </h2>
-                    <div class="tsd-map-wrap">
-                        <iframe
-                            src="https://maps.google.com/maps?q={{ urlencode($tspot->title . ', Sogod, Southern Leyte') }}&t=k&z=13&ie=UTF8&iwloc=&output=embed"
-                            allowfullscreen loading="lazy"
-                            title="{{ $tspot->title }} Location">
-                        </iframe>
-                    </div>
-                </div>
 
                 {{-- Share --}}
                 <div class="tsd-about-section" data-aos="fade-up" data-aos-delay="120" style="margin-bottom:8px;">
