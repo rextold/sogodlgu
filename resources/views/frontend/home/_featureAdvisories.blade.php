@@ -1,43 +1,65 @@
-<div class="advticker">
-    <div>
-        <ul style="list-style: none; margin-left: 0; padding: 0;">
-            @php
-                $posts = App\Post::orderBy('created_at', 'desc')
-                    ->where('status', 'PUBLISHED')
-                    ->with('category')
-                    ->inRandomOrder()
-                    ->get();
-            @endphp
+<style>
+/* ---- Latest Advisories Widget ---- */
+.fadv-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 0;
+}
+.fadv-item {
+    padding: 10px 4px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.fadv-item:last-child { border-bottom: none; }
+.fadv-item a {
+    display: block;
+    font-size: 0.82rem; font-weight: 700;
+    color: #001f2d; line-height: 1.4;
+    text-decoration: none; margin-bottom: 4px;
+    transition: color 0.2s;
+}
+.fadv-item a:hover { color: #ea5211; }
+.fadv-date {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 0.72rem; color: #999; margin-bottom: 4px;
+}
+.fadv-date i { color: #ea5211; }
+.fadv-excerpt {
+    font-size: 0.76rem; color: #777; line-height: 1.5;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.fadv-empty {
+    font-size: 0.82rem; color: #aaa; text-align: center; padding: 12px 0;
+}
+</style>
 
-            @foreach($posts as $post)
-                @if($post->category && $post->category->order == 2)
-                    <li class="adv-item">
-                        <a href="{{ route('article.show', [
-                            'category' => strtolower($post->category->name),
-                            'id'       => $post->id,
-                            'title'    => $post->slug
-                        ]) }}">{{ $post->title }}</a>
-                        <div class="adv-date">
-                            <i class="fa fa-calendar-o"></i>
-                            {{ date('F d, Y', strtotime($post->created_at)) }}
-                        </div>
-                        <article>{{ Str::limit(strip_tags($post->excerpt), 55, '...') }}</article>
-                    </li>
-                @endif
-            @endforeach
-        </ul>
-    </div>
-</div>
+@php
+    $advisories = App\Post::where('status', 'PUBLISHED')
+        ->with('category')
+        ->orderBy('created_at', 'desc')
+        ->get()
+        ->filter(function($p){ return $p->category && $p->category->order == 2; })
+        ->take(6);
+@endphp
 
-<script type="text/javascript" src="{{ asset('js/jquery.easy-ticker.min.js') }}"></script>
-<script type="text/javascript">
-    var myET = $('.advticker').easyTicker({
-        direction: 'up',
-        easing: 'swing',
-        speed: 'slow',
-        interval: 4000,
-        height: 'auto',
-        mousePause: true,
-        controls: { up: '.up', down: '.down', toggle: '.toggle', stopText: 'Stop' }
-    }).data('easyTicker');
-</script>
+@if($advisories->count())
+<ul class="fadv-list">
+    @foreach($advisories as $adv)
+    <li class="fadv-item">
+        <a href="{{ route('article.show', [
+            'category' => strtolower($adv->category->name),
+            'id'       => $adv->id,
+            'title'    => $adv->slug
+        ]) }}">{{ $adv->title }}</a>
+        <div class="fadv-date">
+            <i class="fa fa-calendar-o"></i>
+            {{ $adv->created_at->format('M d, Y') }}
+        </div>
+        @if($adv->excerpt)
+        <div class="fadv-excerpt">{{ strip_tags($adv->excerpt) }}</div>
+        @endif
+    </li>
+    @endforeach
+</ul>
+@else
+<div class="fadv-empty"><i class="fa fa-bell-o"></i> No advisories at this time.</div>
+@endif
+
