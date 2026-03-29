@@ -188,7 +188,7 @@
         <div class="bs-inner">
             <div class="bs-item">
                 <div class="bs-icon"><i class="fa fa-building-o"></i></div>
-                <div class="bs-value">{{ $barangays->count() }}</div>
+                <div class="bs-value">{{ $barangayofficials->pluck('barangay_id')->unique()->count() }}</div>
                 <div class="bs-label">Total Barangays</div>
             </div>
             <div class="bs-item">
@@ -222,7 +222,7 @@
                 <div class="brgy-search-bar" data-aos="fade-up">
                     <span class="bsb-label"><i class="fa fa-search"></i> Search:</span>
                     <input type="text" id="brgySearch" placeholder="Type barangay name or captain..." oninput="filterBarangay()">
-                    <span class="bsb-count">Showing <span id="brgyCount">{{ $barangays->count() }}</span> of {{ $barangays->count() }} barangays</span>
+                    <span class="bsb-count">Showing <span id="brgyCount">{{ $barangayofficials->pluck('barangay_id')->unique()->count() }}</span> of {{ $barangayofficials->pluck('barangay_id')->unique()->count() }} barangays</span>
                 </div>
 
                 {{-- Officials Table --}}
@@ -242,24 +242,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($barangays as $i => $brgy)
-                                @php $official = $barangayofficials->firstWhere('barangay_id', $brgy->id); @endphp
-                                <tr class="brgy-row" data-name="{{ strtolower($brgy->name ?? '') }}" data-captain="{{ strtolower($official->captain ?? '') }}">
+                                @foreach($barangayofficials as $i => $brgyofficial)
+                                <tr class="brgy-row" data-name="{{ strtolower($brgyofficial->barangay->name ?? '') }}" data-captain="{{ strtolower($brgyofficial->captain ?? '') }}">
                                     <td style="width:44px; text-align:center; color:#aaa; font-size:0.8rem;">{{ $i + 1 }}</td>
                                     <td>
                                         <div class="brgy-name">
                                             <span class="brgy-num">{{ $i + 1 }}</span>
-                                            {{ strtoupper($brgy->name ?? 'N/A') }}
+                                            {{ strtoupper($brgyofficial->barangay->name ?? 'N/A') }}
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="captain-name">{{ $official->captain ?? 'N/A' }}</span>
+                                        <span class="captain-name">{{ $brgyofficial->captain ?? 'N/A' }}</span>
                                     </td>
                                     <td>
-                                        @if($official && $official->contactnumber)
+                                        @if($brgyofficial->contactnumber)
                                             <span class="contact-badge">
                                                 <i class="fa fa-phone"></i>
-                                                {{ $official->contactnumber }}
+                                                {{ $brgyofficial->contactnumber }}
                                             </span>
                                         @else
                                             <span class="contact-badge none">
