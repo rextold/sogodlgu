@@ -381,7 +381,7 @@
                     <div class="lib-text">
                         @if($page === 'Sangguniang Bayan Officials')
                             <h4>Sangguniang Bayan of Sogod</h4>
-                            <p>The Sangguniang Bayan (SB) is the local legislative body of the Municipality of Sogod. It is composed of elected councilors who enact ordinances, approve resolutions, and appropriate funds for the municipality. Regular sessions are held every Monday.</p>
+                            <p>The Sangguniang Bayan (SB) is the local legislative body of the Municipality of Sogod. It is composed of elected councilors and the SK Federation President who enact ordinances, approve resolutions, and appropriate funds for the municipality.</p>
                         @else
                             <h4>Elected Officials of Sogod</h4>
                             <p>These are the duly elected officials of the Municipal Government of Sogod, Southern Leyte, serving the people through their respective roles in governance, public service, and community development.</p>
