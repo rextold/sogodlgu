@@ -152,6 +152,9 @@
             line-height: 1.2;
             text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
+        .masthead .lgu-title-block .lgu-name-sogod {
+            font-size: 1.9rem;
+        }
         .masthead .lgu-title-block .lgu-tagline {
             font-size: 0.82rem;
             color: var(--sogod-gold);
@@ -259,7 +262,7 @@
         /* Small Mobile (≤ 480px) */
         @media (max-width: 480px) {
             .masthead .masthead-inner { padding: 0.6rem 0.75rem; }
-            .masthead .logo-img { max-width: 42px; }
+            .masthead .logo-img { width: 72px; height: 72px; }
             .masthead .lgu-title-block .lgu-name { font-size: 0.82rem; }
             .masthead .lgu-title-block .lgu-tagline { font-size: 0.68rem; }
         }
@@ -325,31 +328,50 @@
 </head>
 
 <body>
+
+
+<!-- <input id="tmp-link" type="hidden" data-link=""> -->
+    @include('frontend.widgets._accessibility')
+
+<!-- Start of Off Canvas -->
+<div class="off-canvas-wrapper"  id="app">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<!-- Off Canvas Menu -->
+    @include('frontend.widgets._navbar-right')
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+    @include('frontend.widgets._navbar-left')
+
     <!-- ===== MASTHEAD ===== -->
     <div class="masthead">
-        @if($img = App\PageHeader::where("status",2)->first())
-            <!-- Blurred bg & overlay -->
-            <div class="header-bg" style="background-image: url('{{ Voyager::image($img->image) }}');"></div>
+        @php $headerImg = App\PageHeader::where('status',2)->first(); @endphp
+        @if($headerImg)
+            <div class="header-bg" style="background-image: url('{{ Voyager::image($headerImg->image) }}');"></div>
             <div class="overlay"></div>
         @endif
-
         <div class="masthead-inner">
-            <div class="row align-items-center">
-                <!-- Left: Logo + Title + Header Image -->
-                <div class="col-12 col-md-10 d-flex align-items-center flex-wrap" style="gap:14px;">
-                    <img src="{{ asset('images/logo/logo2.png') }}" class="logo-img" alt="Sogod LGU Logo">
-                    <div class="lgu-title-block mr-3">
-                        <div class="lgu-name">Municipal Government</div>
-                        <div class="lgu-name" style="font-size:1.9rem;">of Sogod</div>
-                        <div class="lgu-tagline"><i class="fa fa-map-marker"></i> &nbsp;Southern Leyte, Philippines</div>
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <!-- Left: Logo + Title + Header Image -->
+                    <div class="col-12 col-md-10">
+                        <div class="d-flex align-items-center" style="gap:18px;">
+                            <img src="{{ asset('images/logo/logo2.png') }}" class="logo-img" alt="Sogod LGU Logo">
+                            <div class="lgu-title-block">
+                                <div class="lgu-name">Municipal Government</div>
+                                <div class="lgu-name lgu-name-sogod">of Sogod</div>
+                                <div class="lgu-tagline"><i class="fa fa-map-marker"></i>&nbsp; Southern Leyte, Philippines</div>
+                            </div>
+                            @if($headerImg)
+                                <img src="{{ Voyager::image($headerImg->image) }}" class="header-img d-none d-lg-block" alt="Page Header">
+                            @endif
+                        </div>
                     </div>
-                    @if($img = App\PageHeader::where("status",2)->first())
-                        <img src="{{ Voyager::image($img->image) }}" class="header-img d-none d-md-block" alt="Page Header">
-                    @endif
-                </div>
-                <!-- Right: Clock -->
-                <div class="col-12 col-md-2 text-md-right mt-2 mt-md-0">
-                    <div id="clock" class="dateclock"></div>
+                    <!-- Right: Clock -->
+                    <div class="col-12 col-md-2 text-right mt-2 mt-md-0">
+                        <div id="clock" class="dateclock"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -371,33 +393,6 @@
         </div>
     </div>
 
-
-<!-- <input id="tmp-link" type="hidden" data-link=""> -->
-    @include('frontend.widgets._accessibility')
-
-<!-- Start of Off Canvas -->
-<div class="off-canvas-wrapper"  id="app">
-    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-
-<!-- Off Canvas Menu -->
-    @include('frontend.widgets._navbar-right')
-
-<div class="off-canvas-content" data-off-canvas-content>
-
-    @include('frontend.widgets._navbar-left')
-<!-- masthead -->
-<div id="masthead" class="masthead-bg masthead-div" style="">
-    <div></div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-6 col-md-6 col-lg-6">
-                <div class="logo">  
-                    <!-- <img src="{{ asset('images/logo/logo.png') }}" style="width: 285px"> -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>   
 <!-- main -->
     <div id="main-content">
         @yield('content')
