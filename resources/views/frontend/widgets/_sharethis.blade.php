@@ -2,7 +2,7 @@
 /* Minimal Transparent Share Buttons with Icons */
 .share-wrapper {
     margin-top: 10px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
 .share-label {

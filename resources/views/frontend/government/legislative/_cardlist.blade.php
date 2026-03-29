@@ -1,5 +1,4 @@
 <style type="text/css">
-	@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
 * {
 	box-sizing: border-box;
@@ -132,7 +131,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	font-family: 'Muli';
+	font-family: 'Poppins', 'Segoe UI', sans-serif;
 	position: relative;
 	height: 169px;	
 	width: 370px;
@@ -181,7 +180,7 @@
 .social-panel h4 {
 	margin: 20px 0;
 	color: #97A5CE;	
-	font-family: 'Muli';	
+	font-family: 'Inter', 'Segoe UI', sans-serif;	
 	font-size: 14px;	
 	line-height: 18px;
 	text-transform: uppercase;
@@ -245,7 +244,7 @@
 	background-color: #001F61;
 	border-radius: 10px 10px 0 0;
 	color: #fff;
-	font-family: 'Muli';
+	font-family: 'Inter', 'Segoe UI', sans-serif;
 	padding: 7px 15px;
 	position: fixed;
 	bottom: 0;

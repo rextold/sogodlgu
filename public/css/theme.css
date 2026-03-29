@@ -40,3 +40,21 @@ ul.is-dropdown-submenu li:hover a{color:#ea5211 !important;}
 
 #back-to-top {position: fixed; bottom: 2em; right: 0px; text-decoration: none; color: #ffffff; background-color: #ea5211; border-top-left-radius: 5px; border-bottom-left-radius: 5px; font-size: 0.75rem; padding: 1em; display: none; z-index:101; opacity:0.8;}
 #back-to-top:hover {opacity:1; background-color: #003d7a;}
+/* ============================================================
+   SOGOD LGU — GLOBAL FONT ENFORCEMENT
+   Body: Inter | Headings: Poppins
+   Applied last so it wins over legacy CSS files (Roboto, Muli, Rubik, Pacifico, Nunito)
+============================================================ */
+body,
+.off-canvas-content,
+.container,
+.container-fluid,
+p, span, a, li, td, th, label, input, textarea, select, button {
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.card-title, .sgd-section-title,
+.navbar-brand, strong[class] {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+}

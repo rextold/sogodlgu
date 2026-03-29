@@ -64,7 +64,7 @@
     position: absolute;
     top: 14px;
     left: 18px;
-    font-family: Georgia, serif;
+    font-family: 'Poppins', 'Segoe UI', serif;
 }
 .mayors-welcome-wrap .mw-message-panel .mw-subtitle {
     display: inline-block;

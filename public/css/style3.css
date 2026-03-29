@@ -1,12 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Pacifico");
+/* Font import moved to home.blade.php (Inter + Poppins) */
 
 body {
   /*background-color: #ffffff;*/
     background-color: #0a0e2900;
     color: black;
 }
-h4, h5 {s
-  font-family: 'Pacifico', cursive;
+h4, h5 {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
 
 h4 {
@@ -136,7 +136,7 @@ $sec: #fffffe;
 $darkpri: #0B5AA2;
 * {
   box-sizing: border-radius;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 .side-style .container {
   border: 1px solid black;
