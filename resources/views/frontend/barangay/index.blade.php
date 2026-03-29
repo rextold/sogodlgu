@@ -193,12 +193,12 @@
             </div>
             <div class="bs-item">
                 <div class="bs-icon"><i class="fa fa-user"></i></div>
-                <div class="bs-value">{{ $barangayofficials->count() }}</div>
+                <div class="bs-value">{{ $barangayofficials->filter(function($o){ return stripos($o->position->name ?? '', 'captain') !== false; })->count() ?: $barangays->count() }}</div>
                 <div class="bs-label">Barangay Captains</div>
             </div>
             <div class="bs-item">
                 <div class="bs-icon"><i class="fa fa-phone"></i></div>
-                <div class="bs-value">{{ $barangayofficials->whereNotNull('contactnumber')->where('contactnumber','!=','')->count() }}</div>
+                <div class="bs-value">{{ $barangayofficials->filter(function($o){ return stripos($o->position->name ?? '', 'captain') !== false && !empty($o->contactnumber); })->count() ?: $barangayofficials->whereNotNull('contactnumber')->where('contactnumber','!=','')->count() }}</div>
                 <div class="bs-label">With Contact No.</div>
             </div>
             <div class="bs-item">

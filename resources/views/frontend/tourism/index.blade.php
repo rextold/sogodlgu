@@ -129,7 +129,7 @@
             <div class="ts-item">
                 <div class="ts-icon"><i class="fa fa-map-marker"></i></div>
                 <div class="ts-value">{{ App\TouristSpot::count() }}</div>
-                <div class="ts-label">Tourist Spots</div>
+                <div class="ts-label">Places to Visit</div>
             </div>
             <div class="ts-item">
                 <div class="ts-icon"><i class="fa fa-th-large"></i></div>
