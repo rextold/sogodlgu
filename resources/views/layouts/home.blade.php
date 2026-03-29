@@ -2,8 +2,18 @@
 <html class="no-js" lang="en" ng-app="myApp">
   <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- PWA -->
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#001f2d">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="Sogod LGU">
+        <meta name="application-name" content="Sogod LGU">
+        <meta name="msapplication-TileColor" content="#001f2d">
+        <meta name="msapplication-TileImage" content="/adminfiles/assets/images/favicon.png">
         <meta property="og:url" content="{{ url()->full() }}" />
         <meta property="og:type" content="" />
         @if(isset($announcement->title))
@@ -308,6 +318,102 @@
 
         /* Prevent horizontal scroll: apply to a wrapper, NOT body — to avoid breaking AOS */
         .off-canvas-wrapper { overflow-x: hidden; }
+
+        /* ============================================================
+           PWA — MOBILE NATIVE BOTTOM NAVIGATION
+        ============================================================ */
+        .pwa-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: #001f2d;
+            border-top: 2px solid var(--sogod-orange);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.45);
+        }
+        .pwa-bottom-nav-inner {
+            display: flex;
+            align-items: stretch;
+        }
+        .pwa-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 4px 7px;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none !important;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            flex: 1;
+            transition: color 0.2s ease, background 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+            gap: 3px;
+            line-height: 1;
+        }
+        .pwa-nav-item i {
+            font-size: 1.25rem;
+            transition: transform 0.2s ease;
+        }
+        .pwa-nav-item.pwa-active {
+            color: var(--sogod-orange);
+            background: rgba(234,82,17,0.08);
+        }
+        .pwa-nav-item.pwa-active::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20%;
+            right: 20%;
+            height: 3px;
+            background: var(--sogod-orange);
+            border-radius: 0 0 4px 4px;
+        }
+        .pwa-nav-item.pwa-active i {
+            transform: translateY(-2px);
+        }
+
+        /* ---- Phone-only rules (<= 767px) ---- */
+        @media (max-width: 767px) {
+            /* Show bottom nav */
+            .pwa-bottom-nav { display: block; }
+
+            /* Push main content above the nav bar */
+            #main-content {
+                padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+            }
+
+            /* Hide the full desktop footer — bottom nav replaces it */
+            .footer,
+            .footer-brand-bar,
+            #gwt-standard-footer {
+                display: none !important;
+            }
+
+            /* Native-feel scrolling */
+            .off-canvas-content {
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Prevent text resize on orientation change */
+            html {
+                -webkit-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+            }
+
+            /* Remove tap highlight on all interactive elements */
+            a, button, input, select, textarea {
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+            }
+
+            /* Compact the navbar on phone — one tap opens menu */
+            #main-nav .top-bar { padding: 6px 12px; }
+        }
         </style>
 
 
@@ -536,6 +642,41 @@
     </div><!-- off-canvas-wrapper-inner -->
   </div><!-- off-canvas-wrapper -->
 
+<!-- ===== PWA MOBILE BOTTOM NAVIGATION ===== -->
+@php
+    $pwaPath = request()->path();
+    $pwaRoute = request()->route() ? request()->route()->getName() : '';
+    $pwaIsHome       = $pwaPath === '/' || $pwaRoute === 'home';
+    $pwaIsNews       = str_starts_with($pwaPath, 'news') || $pwaRoute === 'news';
+    $pwaIsTourism    = str_starts_with($pwaPath, 'tourism') || str_starts_with($pwaRoute ?? '', 'tourism');
+    $pwaIsBarangay   = str_starts_with($pwaPath, 'barangay') || $pwaRoute === 'barangay';
+    $pwaIsGov        = str_starts_with($pwaPath, 'government') || str_starts_with($pwaRoute ?? '', 'gov.');
+@endphp
+<nav class="pwa-bottom-nav" aria-label="Mobile Navigation">
+    <div class="pwa-bottom-nav-inner">
+        <a href="{{ route('home') }}" class="pwa-nav-item {{ $pwaIsHome ? 'pwa-active' : '' }}">
+            <i class="fa fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="{{ route('news') }}" class="pwa-nav-item {{ $pwaIsNews ? 'pwa-active' : '' }}">
+            <i class="fa fa-newspaper-o"></i>
+            <span>News</span>
+        </a>
+        <a href="{{ route('tourism') }}" class="pwa-nav-item {{ $pwaIsTourism ? 'pwa-active' : '' }}">
+            <i class="fa fa-camera"></i>
+            <span>Tourism</span>
+        </a>
+        <a href="{{ route('barangay') }}" class="pwa-nav-item {{ $pwaIsBarangay ? 'pwa-active' : '' }}">
+            <i class="fa fa-building-o"></i>
+            <span>Barangays</span>
+        </a>
+        <a href="{{ route('gov.elected.officials') }}" class="pwa-nav-item {{ $pwaIsGov ? 'pwa-active' : '' }}">
+            <i class="fa fa-sitemap"></i>
+            <span>Officials</span>
+        </a>
+    </div>
+</nav>
+
     <script type="text/javascript">
     (function(d, s, id) {
     var js, gjs = d.getElementById('gwt-standard-footer');
@@ -568,7 +709,16 @@
       <script>
         AOS.init();
       </script>
-   <script>
+
+    <!-- Service Worker Registration (PWA) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js')
+                    .catch(function () { /* SW not supported or blocked */ });
+            });
+        }
+    </script>
 </body>
   
 </html>

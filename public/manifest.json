@@ -1,0 +1,77 @@
+{
+    "name": "Municipal Government of Sogod",
+    "short_name": "Sogod LGU",
+    "description": "Official website of the Municipal Government of Sogod, Southern Leyte, Philippines.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#001f2d",
+    "theme_color": "#001f2d",
+    "orientation": "portrait-primary",
+    "lang": "en-PH",
+    "icons": [
+        {
+            "src": "/adminfiles/assets/images/favicon.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "/adminfiles/assets/images/favicon.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "/adminfiles/assets/images/favicon.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/adminfiles/assets/images/favicon.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "/adminfiles/assets/images/favicon.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/adminfiles/assets/images/favicon.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "/adminfiles/assets/images/favicon.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/adminfiles/assets/images/favicon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Latest News",
+            "short_name": "News",
+            "url": "/news",
+            "icons": [{ "src": "/adminfiles/assets/images/favicon.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "Tourism",
+            "short_name": "Tourism",
+            "url": "/tourism",
+            "icons": [{ "src": "/adminfiles/assets/images/favicon.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "Barangays",
+            "short_name": "Barangays",
+            "url": "/barangay",
+            "icons": [{ "src": "/adminfiles/assets/images/favicon.png", "sizes": "192x192" }]
+        }
+    ],
+    "categories": ["government", "local", "public-services"]
+}
