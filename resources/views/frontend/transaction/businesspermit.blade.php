@@ -79,7 +79,7 @@
 .bp-content-body p { margin-bottom: 0.9rem; }
 .bp-content-body ul, .bp-content-body ol { padding-left: 22px; }
 .bp-content-body li { margin-bottom: 5px; }
-.bp-content-body table { width: 100% !important; border-collapse: collapse; margin-top: 10px; height: auto !important; }
+.bp-content-body table { width: 100% !important; border-collapse: collapse; margin-top: 10px; }
 .bp-content-body table tr { height: auto !important; }
 .bp-content-body table th {
     background: #0052a5; color: #fff; padding: 8px 12px;
