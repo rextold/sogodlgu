@@ -43,6 +43,7 @@ Route::prefix('government')->group(function () {
 //currently use
 Route::prefix('transactions')->group(function () {
     Route::get('/businesspermits', 'Frontend\TransactionController@business')->name('bpermit');
+    Route::get('/files', 'Frontend\FilesController@index')->name('files.index');
 });
 
 //currently use
