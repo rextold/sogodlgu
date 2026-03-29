@@ -331,6 +331,77 @@
     border-radius: 2px;
 }
 
+/* ---- Services Centered Heading ---- */
+.services-section {
+    position: relative;
+}
+.services-section::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(to right, #ea5211, #f4c542, #0052a5);
+}
+.services-heading-wrap {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.services-heading-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, #ea5211, #c9460e);
+    color: #fff; font-size: 0.7rem; font-weight: 800;
+    padding: 4px 16px; border-radius: 20px;
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;
+}
+.services-heading-title {
+    font-size: 1.6rem; font-weight: 900; color: #001f2d; margin-bottom: 6px;
+}
+.services-heading-title span { color: #ea5211; }
+.services-heading-sub {
+    font-size: 0.9rem; color: #888; margin: 0;
+}
+.services-heading-divider {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin-top: 12px;
+}
+.services-heading-divider .shd-line {
+    width: 60px; height: 2px;
+    background: linear-gradient(to right, transparent, #ea5211);
+    border-radius: 2px;
+}
+.services-heading-divider .shd-line.right {
+    background: linear-gradient(to left, transparent, #ea5211);
+}
+.services-heading-divider .shd-dot {
+    width: 8px; height: 8px; background: #ea5211; border-radius: 50%;
+}
+.services-grid-wrap {
+    max-width: 980px;
+    margin: 0 auto;
+}
+.services-grid {
+    justify-content: center;
+}
+
+/* ---- Section Row Divider ---- */
+.home-row-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #dde2ef 30%, #dde2ef 70%, transparent);
+    margin: 4px 0 20px;
+}
+
+/* ---- Content Section Labels ---- */
+.content-section-hdr {
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 18px;
+    border-radius: 10px 10px 0 0;
+    font-weight: 700; font-size: 0.95rem; color: #fff;
+    letter-spacing: 0.3px;
+}
+.content-section-hdr.orange { background: linear-gradient(135deg, #ea5211, #c9460e); }
+.content-section-hdr.blue   { background: linear-gradient(135deg, #0052a5, #003d7a); }
+.content-section-hdr.teal   { background: linear-gradient(135deg, #186152, #0e3d32); }
+.content-section-hdr.navy   { background: linear-gradient(135deg, #001f2d, #003d7a); }
+.content-section-hdr.gold   { background: linear-gradient(135deg, #c08b00, #8a6400); }
+
 /* ============================================================
    RESPONSIVE
 ============================================================ */
@@ -428,80 +499,102 @@
 {{-- ===== GOVERNMENT SERVICES ===== --}}
 <div class="services-section">
     <div class="container-fluid">
-        <div class="section-label">
-            <span class="sl-text"><i class="fa fa-cogs" style="color:#ea5211;"></i> &nbsp;Online Government Services</span>
-            <div class="sl-line"></div>
+        <div class="services-heading-wrap" data-aos="fade-up">
+            <div class="services-heading-tag"><i class="fa fa-cogs"></i> e-Government</div>
+            <h2 class="services-heading-title">Online <span>Government</span> Services</h2>
+            <p class="services-heading-sub">Access Sogod LGU services conveniently &mdash; anytime, anywhere.</p>
+            <div class="services-heading-divider">
+                <div class="shd-line"></div>
+                <div class="shd-dot"></div>
+                <div class="shd-line right"></div>
+            </div>
         </div>
-        <div class="services-grid">
-            <a href="{{ route('bpermit') }}" class="service-card sc-orange" data-aos="zoom-in" data-aos-delay="0">
-                <i class="fa fa-file-text-o sc-icon"></i>
-                <span class="sc-label">Business Permit</span>
-            </a>
-            <a href="#" class="service-card sc-blue" data-aos="zoom-in" data-aos-delay="60">
-                <i class="fa fa-building sc-icon"></i>
-                <span class="sc-label">Building Permit</span>
-            </a>
-            <a href="https://eservices.sogodlgu.gov.ph/" target="_blank" class="service-card sc-teal" data-aos="zoom-in" data-aos-delay="120">
-                <i class="fa fa-medkit sc-icon"></i>
-                <span class="sc-label">Sanitary Permit</span>
-            </a>
-            <a href="{{ route('citizenscharter') }}" class="service-card sc-gold" data-aos="zoom-in" data-aos-delay="180">
-                <i class="fa fa-book sc-icon"></i>
-                <span class="sc-label">Citizen's Charter</span>
-            </a>
-            <a href="{{ route('fdp.index') }}" class="service-card sc-navy" data-aos="zoom-in" data-aos-delay="240">
-                <i class="fa fa-folder-open-o sc-icon"></i>
-                <span class="sc-label">FDP Reports</span>
-            </a>
-            <a href="{{ route('gov.legislative.ordinances') }}" class="service-card sc-red" data-aos="zoom-in" data-aos-delay="300">
-                <i class="fa fa-gavel sc-icon"></i>
-                <span class="sc-label">Ordinances</span>
-            </a>
+        <div class="services-grid-wrap">
+            <div class="services-grid">
+                <a href="{{ route('bpermit') }}" class="service-card sc-orange" data-aos="zoom-in" data-aos-delay="0">
+                    <i class="fa fa-file-text-o sc-icon"></i>
+                    <span class="sc-label">Business Permit</span>
+                </a>
+                <a href="#" class="service-card sc-blue" data-aos="zoom-in" data-aos-delay="60">
+                    <i class="fa fa-building sc-icon"></i>
+                    <span class="sc-label">Building Permit</span>
+                </a>
+                <a href="https://eservices.sogodlgu.gov.ph/" target="_blank" class="service-card sc-teal" data-aos="zoom-in" data-aos-delay="120">
+                    <i class="fa fa-medkit sc-icon"></i>
+                    <span class="sc-label">Sanitary Permit</span>
+                </a>
+                <a href="{{ route('citizenscharter') }}" class="service-card sc-gold" data-aos="zoom-in" data-aos-delay="180">
+                    <i class="fa fa-book sc-icon"></i>
+                    <span class="sc-label">Citizen's Charter</span>
+                </a>
+                <a href="{{ route('fdp.index') }}" class="service-card sc-navy" data-aos="zoom-in" data-aos-delay="240">
+                    <i class="fa fa-folder-open-o sc-icon"></i>
+                    <span class="sc-label">FDP Reports</span>
+                </a>
+                <a href="{{ route('gov.legislative.ordinances') }}" class="service-card sc-red" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fa fa-gavel sc-icon"></i>
+                    <span class="sc-label">Ordinances</span>
+                </a>
+            </div>
         </div>
     </div>
 </div>
 
-{{-- ===== NEWS + SIDEBAR ===== --}}
-<div class="container-fluid px-3 py-2">
+{{-- ===== ROW 1 : LATEST NEWS  +  ADVISORIES ===== --}}
+<div class="container-fluid px-3 pt-3 pb-0">
     <div class="row">
 
-        {{-- MAIN COLUMN --}}
-        <div class="col-lg-9">
-            {{-- Featured News --}}
-            <div class="hn-plain-section" data-aos="fade-up">
-                <div class="hn-section-title">
-                    <span class="hn-title-bar"></span>
-                    <i class="fa fa-newspaper-o" style="color:#ea5211;"></i> Latest News &amp; Announcements
+        {{-- Latest News & Announcements (8 cols) --}}
+        <div class="col-lg-8 mb-3">
+            <div class="home-card h-100" data-aos="fade-up">
+                <div class="content-section-hdr orange">
+                    <i class="fa fa-newspaper-o"></i> Latest News &amp; Announcements
                 </div>
-                @include('frontend.widgets._newsticker')
+                <div style="padding:14px 16px;">
+                    @include('frontend.widgets._newsticker')
+                </div>
                 <div class="news-see-more" style="border-top:1px solid #f0f0f0;">
                     <a href="{{ route('news') }}"><i class="fa fa-arrow-right"></i> See All News</a>
                 </div>
             </div>
+        </div>
 
-            {{-- Upcoming Events --}}
-            <div class="home-card" data-aos="fade-up" data-aos-delay="80">
-                <div class="hcard-header teal">
+        {{-- Advisories (4 cols) --}}
+        <div class="col-lg-4 mb-3">
+            <div class="home-card h-100" data-aos="fade-left" data-aos-delay="60">
+                <div class="content-section-hdr gold">
+                    <i class="fa fa-bullhorn"></i> Advisories
+                </div>
+                <div style="padding:10px 14px;">
+                    @include('frontend.home._featureAdvisories')
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{{-- ===== ROW 2 : UPCOMING EVENTS  +  USEFUL LINKS ===== --}}
+<div class="container-fluid px-3 pt-0 pb-3">
+    <div class="home-row-divider"></div>
+    <div class="row">
+
+        {{-- Upcoming Events (7 cols) --}}
+        <div class="col-lg-7 mb-3">
+            <div class="home-card h-100" data-aos="fade-up" data-aos-delay="40">
+                <div class="content-section-hdr teal">
                     <i class="fa fa-calendar"></i> Upcoming Events
                 </div>
-                <div class="hcard-body">
+                <div style="padding:14px 16px;">
                     @include('frontend.home._featevents')
                 </div>
             </div>
         </div>
 
-        {{-- SIDEBAR --}}
-        <div class="col-lg-3">
-            <div data-aos="fade-left">
+        {{-- Useful Links (5 cols) --}}
+        <div class="col-lg-5 mb-3">
+            <div data-aos="fade-left" data-aos-delay="80">
                 @include('frontend.home._usefullinksandothers')
-            </div>
-            <div class="sidebar-card" data-aos="fade-left" data-aos-delay="80">
-                <div class="card-header">
-                    <i class="fa fa-bullhorn"></i> Advisories
-                </div>
-                <div class="card-body">
-                    @include('frontend.home._featureAdvisories')
-                </div>
             </div>
         </div>
 
