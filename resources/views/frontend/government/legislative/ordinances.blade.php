@@ -171,6 +171,34 @@
 .mvc-list li a:hover { background: #edf3fb; color: #0052a5; }
 .mvc-list li a i { color: #0052a5; margin-top: 2px; flex-shrink: 0; }
 
+/* ---- Search Bar ---- */
+.ord-search-bar {
+    background: #fff; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08); margin-bottom: 16px;
+    padding: 14px 16px;
+    display: flex; align-items: center; gap: 10px;
+}
+.ord-search-bar .osb-icon {
+    color: #0052a5; font-size: 1rem; flex-shrink: 0;
+}
+.ord-search-bar input {
+    flex: 1; border: 1.5px solid #e0e7f0; border-radius: 8px;
+    padding: 8px 14px; font-size: 0.88rem; outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+}
+.ord-search-bar input:focus {
+    border-color: #0052a5;
+    box-shadow: 0 0 0 3px rgba(0,82,165,0.12);
+}
+.ord-search-bar .osb-count {
+    font-size: 0.75rem; color: #888; white-space: nowrap; flex-shrink: 0;
+}
+.ord-no-results {
+    padding: 36px 20px; text-align: center; color: #aaa; display: none;
+}
+.ord-no-results i { font-size: 2rem; display: block; margin-bottom: 8px; }
+
 /* ---- Responsive ---- */
 @media (max-width: 767px) {
     .ord-hero h1 { font-size: 1.4rem; }
@@ -266,14 +294,23 @@
                     </div>
                 </div>
 
+                <div class="ord-search-bar">
+                    <i class="fa fa-search osb-icon"></i>
+                    <input type="text" id="ordSearchInput"
+                           placeholder="Search ordinances by title..."
+                           oninput="filterOrdinances(this.value)">
+                    <span class="osb-count" id="ordSearchCount">{{ $ordinances->count() }} results</span>
+                </div>
+
                 <div class="ord-list-card">
                     <div class="ord-list-header">
                         <span><i class="fa fa-list"></i> &nbsp;Ordinance Directory</span>
-                        <span class="olh-count">{{ $ordinances->count() }} records</span>
+                        <span class="olh-count" id="ordListCount">{{ $ordinances->count() }} records</span>
                     </div>
 
                     @forelse($ordinances as $ordinance)
                         <a class="ord-item"
+                           data-title="{{ strtolower($ordinance->title) }}"
                            href="{{ route('gov.legislative.show_ordinance', ['id' => $ordinance->id, 'title' => $ordinance->title]) }}">
                             <div class="oi-icon"><i class="fa fa-file-text-o"></i></div>
                             <div class="oi-body">
@@ -293,6 +330,10 @@
                             No ordinances found for this period.
                         </div>
                     @endforelse
+                    <div class="ord-no-results" id="ordNoResults">
+                        <i class="fa fa-search"></i>
+                        No ordinances match your search.
+                    </div>
                 </div>
             </div>
 
@@ -337,4 +378,26 @@
         </div>
     </div>
 </div>
+<script>
+function filterOrdinances(query) {
+    var q = query.toLowerCase().trim();
+    var items = document.querySelectorAll('.ord-item');
+    var visible = 0;
+    items.forEach(function(item) {
+        var title = item.getAttribute('data-title') || '';
+        if (!q || title.indexOf(q) !== -1) {
+            item.style.display = '';
+            visible++;
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    var countEl = document.getElementById('ordListCount');
+    var countEl2 = document.getElementById('ordSearchCount');
+    var noRes = document.getElementById('ordNoResults');
+    if (countEl) countEl.textContent = visible + ' records';
+    if (countEl2) countEl2.textContent = visible + ' results';
+    if (noRes) noRes.style.display = (visible === 0 && q) ? 'block' : 'none';
+}
+</script>
 @endsection

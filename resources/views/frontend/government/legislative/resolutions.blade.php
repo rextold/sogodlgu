@@ -173,6 +173,34 @@
 .res-nav-list li a:hover { background: #edf3fb; color: #0052a5; }
 .res-nav-list li a i { color: #0052a5; flex-shrink: 0; }
 
+/* ---- Search Bar ---- */
+.res-search-bar {
+    background: #fff; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08); margin-bottom: 16px;
+    padding: 14px 16px;
+    display: flex; align-items: center; gap: 10px;
+}
+.res-search-bar .rsb-icon {
+    color: #ea5211; font-size: 1rem; flex-shrink: 0;
+}
+.res-search-bar input {
+    flex: 1; border: 1.5px solid #e0e7f0; border-radius: 8px;
+    padding: 8px 14px; font-size: 0.88rem; outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+}
+.res-search-bar input:focus {
+    border-color: #ea5211;
+    box-shadow: 0 0 0 3px rgba(234,82,17,0.12);
+}
+.res-search-bar .rsb-count {
+    font-size: 0.75rem; color: #888; white-space: nowrap; flex-shrink: 0;
+}
+.res-no-results {
+    padding: 36px 20px; text-align: center; color: #aaa; display: none;
+}
+.res-no-results i { font-size: 2rem; display: block; margin-bottom: 8px; }
+
 /* ---- Responsive ---- */
 @media (max-width: 767px) {
     .res-hero h1 { font-size: 1.4rem; }
@@ -268,14 +296,23 @@
                     </div>
                 </div>
 
+                <div class="res-search-bar">
+                    <i class="fa fa-search rsb-icon"></i>
+                    <input type="text" id="resSearchInput"
+                           placeholder="Search resolutions by title..."
+                           oninput="filterResolutions(this.value)">
+                    <span class="rsb-count" id="resSearchCount">{{ $resolutions->count() }} results</span>
+                </div>
+
                 <div class="res-list-card">
                     <div class="res-list-header">
                         <span><i class="fa fa-list"></i> &nbsp;Resolution Directory</span>
-                        <span class="rlh-count">{{ $resolutions->count() }} records</span>
+                        <span class="rlh-count" id="resListCount">{{ $resolutions->count() }} records</span>
                     </div>
 
                     @forelse($resolutions as $resolution)
                         <a class="res-item"
+                           data-title="{{ strtolower($resolution->title) }}"
                            href="{{ route('gov.legislative.show_resolution', ['id' => $resolution->id, 'title' => $resolution->title]) }}">
                             <div class="ri-icon"><i class="fa fa-file-text-o"></i></div>
                             <div class="ri-body">
@@ -295,6 +332,10 @@
                             No resolutions found for this period.
                         </div>
                     @endforelse
+                    <div class="res-no-results" id="resNoResults">
+                        <i class="fa fa-search"></i>
+                        No resolutions match your search.
+                    </div>
                 </div>
             </div>
 
@@ -339,4 +380,26 @@
         </div>
     </div>
 </div>
+<script>
+function filterResolutions(query) {
+    var q = query.toLowerCase().trim();
+    var items = document.querySelectorAll('.res-item');
+    var visible = 0;
+    items.forEach(function(item) {
+        var title = item.getAttribute('data-title') || '';
+        if (!q || title.indexOf(q) !== -1) {
+            item.style.display = '';
+            visible++;
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    var countEl = document.getElementById('resListCount');
+    var countEl2 = document.getElementById('resSearchCount');
+    var noRes = document.getElementById('resNoResults');
+    if (countEl) countEl.textContent = visible + ' records';
+    if (countEl2) countEl2.textContent = visible + ' results';
+    if (noRes) noRes.style.display = (visible === 0 && q) ? 'block' : 'none';
+}
+</script>
 @endsection
