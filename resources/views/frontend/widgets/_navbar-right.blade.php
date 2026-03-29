@@ -1,6 +1,21 @@
+<style>
+/* ---- Mobile Off-Canvas Nav ---- */
+#offCanvasRight { background: #001f2d; }
+#offCanvasRight .menu li a {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+#offCanvasRight .menu li a:hover { color: #f4c542; background: rgba(255,255,255,0.06); }
+#offCanvasRight .is-drilldown-submenu { background: #0a2d3e; }
+#offCanvasRight .is-drilldown-submenu li a { color: #fff; }
+#offCanvasRight .js-drilldown-back > a::before { border-color: rgba(255,255,255,0.7) transparent transparent; }
+</style>
 <div id="offCanvasRight" class="off-canvas position-right hide-for-large" data-off-canvas data-position="right">
           
-    <ul class="vertical menu" data-drilldown data-parent-link="true" style="color: black;">
+    <ul class="vertical menu" data-drilldown data-parent-link="true">
         <li><a href="{{ route('home') }}">Home</a></li>
         <li>
             <a href="#">Government</a>
