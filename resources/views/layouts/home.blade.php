@@ -57,6 +57,10 @@
         <link rel="stylesheet" href="{{ asset('css/style3.css') }}"/>
         <link rel="stylesheet" href="{{ asset('aos/aos.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/card-carousel.css') }}" />
+        <!-- Professional Google Fonts: Inter (body) + Poppins (headings) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800;900&display=swap">
         <!-- Global Brand CSS Variables + Masthead CSS -->
         <style>
         /* ============================================================
@@ -84,7 +88,18 @@
         /* ---- Global Body ---- */
         body {
             background-color: #f4f6f9;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            font-size: 15px;
+            line-height: 1.65;
+            color: #2d3748;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, h4, h5, h6,
+        .navbar-brand, .sgd-section-title,
+        .card-title, .h1, .h2, .h3, .h4, .h5, .h6 {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            letter-spacing: -0.01em;
         }
 
         /* ---- Section Headers ---- */
@@ -520,7 +535,7 @@
 .footer {
     background: linear-gradient(180deg, #001a2c 0%, #001f2d 100%);
     color: #d8dde2;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     padding: 50px 0 20px;
     border-top: 4px solid var(--sogod-orange);
 }
