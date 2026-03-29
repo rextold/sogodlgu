@@ -294,10 +294,6 @@
                     <div class="aic-body">
                         <ul class="sogod-facts-list">
                             <li>
-                                <i class="fa fa-building-o"></i>
-                                <div><strong>Classification</strong>5th Class Municipality</div>
-                            </li>
-                            <li>
                                 <i class="fa fa-map"></i>
                                 <div><strong>Province</strong>Southern Leyte</div>
                             </li>
