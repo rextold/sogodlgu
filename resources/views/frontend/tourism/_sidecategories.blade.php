@@ -2,42 +2,28 @@
 .side-nav-categories {
     position: relative;
     background-color: #fff;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #f5f5f5 #eee #d5d5d5 #eee;
-    box-shadow: 0 5px 0 rgba(200,200,200,.2);
-    margin-bottom: 30px;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
 }
-.title {
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 12px 25px;
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    background: linear-gradient(90deg,#4fc3f7,#1e8f6e);
-    margin-left: -10px;
-}
-ul#category-tabs { padding:0; margin:0; list-style:none;}
-ul#category-tabs li { padding: 10px 18px; border-bottom:1px solid #ececec; position:relative;}
-ul#category-tabs li a { color:#333; font-weight:700; font-size:13px; display:block;}
-ul#category-tabs li a i { position:absolute; right:18px; top:12px; color:#1e8f6e;}
-.sub-category-tabs { list-style:none; padding-left:10px; margin-top:8px; display:none;}
-.sub-category-tabs li { padding:4px 0; border-bottom:none;}
-.sub-category-tabs li a { font-weight:600; font-size:13px; color:#444; }
+ul#category-tabs { padding: 0; margin: 0; list-style: none; }
+ul#category-tabs li { padding: 0; border-bottom: 1px solid #f0f0f0; position: relative; }
+ul#category-tabs li a { color: #333; font-weight: 600; font-size: 0.85rem; display: block; padding: 10px 40px 10px 18px; }
+ul#category-tabs li a:hover { background: #edf3fb; color: #0052a5; text-decoration: none; }
+ul#category-tabs li i.toggle-icon { position: absolute; right: 18px; top: 12px; color: #ea5211; pointer-events: none; }
+.sub-category-tabs { list-style: none; padding-left: 0; margin-top: 0; display: none; background: #f8f9fc; border-top: 1px solid #eaeff8; }
+.sub-category-tabs li { padding: 0; border-bottom: none; }
+.sub-category-tabs li a { font-weight: 500; font-size: 0.82rem; color: #555; padding: 7px 16px 7px 28px; display: block; }
+.sub-category-tabs li a:hover { color: #0052a5; background: #edf3fb; text-decoration: none; }
 </style>
 
 <div class="side-nav-categories">
-    <div class="title"><strong>Category</strong></div>
-
     @foreach($categories as $category)
         @php $safeId = 'cat-'. $category->id; @endphp
         <ul id="category-tabs">
             <li>
                 <a href="javascript:void(0)" class="main-category" data-target="#{{ $safeId }}">
                     {{ $category->name }}
-                    <i class="fa fa-plus"></i>
+                    <i class="fa fa-plus toggle-icon"></i>
                 </a>
 
                 <ul id="{{ $safeId }}" class="sub-category-tabs">
@@ -48,7 +34,7 @@ ul#category-tabs li a i { position:absolute; right:18px; top:12px; color:#1e8f6e
                         <li><a href="{{ route('tourism.tourist_spot',['id'=>$spot->id,'name'=>$spot->title]) }}">{{ $spot->title }}</a></li>
                     @endforeach
                     @if($spots->isEmpty())
-                        <li><small class="text-muted">No spots yet</small></li>
+                        <li><small class="text-muted" style="padding: 7px 28px; display:block;">No spots yet</small></li>
                     @endif
                 </ul>
             </li>

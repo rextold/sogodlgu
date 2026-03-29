@@ -14,7 +14,7 @@ a {text-decoration: none;}
 	padding: 1.25rem 0px;
 }
 #main-nav {
-background-color: #f7f7f7;
+background-color: #001f2d;
 line-height: 58px;
 }
 .datetime{
@@ -24,8 +24,8 @@ line-height: 58px;
     right: -49px;
 }
 #main-nav .top-bar {
-background: #305051;
-color: aliceblue;
+background: #001f2d;
+color: #fff;
 overflow: visible;
 height: 58px;
 }
@@ -93,8 +93,8 @@ height: 58px;
 }
 .top-bar-section li:not(.has-form) a:not(.button){
 	line-height: 58px;
-	background: #f7f7f7;
-	color: #000;
+	background: #001f2d;
+	color: #fff;
 }
 
 	/* header */
