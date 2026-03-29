@@ -257,46 +257,6 @@
             </div>
         </div>
 
-        {{-- ===== CORE VALUES ===== --}}
-        <div class="mv-values-section" data-aos="fade-up" data-aos-delay="80">
-            <div class="mvv-header">
-                <div class="mvv-tag"><i class="fa fa-star"></i> &nbsp;Our Foundation</div>
-                <h2>Core Values</h2>
-            </div>
-            <div class="mv-values-grid">
-                <div class="mv-value-card" data-aos="zoom-in" data-aos-delay="0">
-                    <div class="mvc-icon-wrap blue"><i class="fa fa-balance-scale"></i></div>
-                    <div class="mvc-title">Integrity</div>
-                    <div class="mvc-desc">Upholding honesty and transparency in every public service we deliver.</div>
-                </div>
-                <div class="mv-value-card" data-aos="zoom-in" data-aos-delay="60">
-                    <div class="mvc-icon-wrap orange"><i class="fa fa-heart"></i></div>
-                    <div class="mvc-title">Service</div>
-                    <div class="mvc-desc">Dedicating ourselves to the welfare and needs of every Sogodnon.</div>
-                </div>
-                <div class="mv-value-card" data-aos="zoom-in" data-aos-delay="120">
-                    <div class="mvc-icon-wrap teal"><i class="fa fa-leaf"></i></div>
-                    <div class="mvc-title">Sustainability</div>
-                    <div class="mvc-desc">Protecting our environment and natural resources for future generations.</div>
-                </div>
-                <div class="mv-value-card" data-aos="zoom-in" data-aos-delay="0">
-                    <div class="mvc-icon-wrap gold"><i class="fa fa-handshake-o"></i></div>
-                    <div class="mvc-title">Unity</div>
-                    <div class="mvc-desc">Building a community through partnership, respect, and inclusivity.</div>
-                </div>
-                <div class="mv-value-card" data-aos="zoom-in" data-aos-delay="60">
-                    <div class="mvc-icon-wrap purple"><i class="fa fa-lightbulb-o"></i></div>
-                    <div class="mvc-title">Innovation</div>
-                    <div class="mvc-desc">Embracing technology and new ideas to improve governance and services.</div>
-                </div>
-                <div class="mv-value-card" data-aos="zoom-in" data-aos-delay="120">
-                    <div class="mvc-icon-wrap navy"><i class="fa fa-shield"></i></div>
-                    <div class="mvc-title">Accountability</div>
-                    <div class="mvc-desc">Ensuring responsible use of public funds and resources at all times.</div>
-                </div>
-            </div>
-        </div>
-
         {{-- ===== BACK CTA ===== --}}
         <div class="mv-back-cta" data-aos="fade-up">
             <div class="mbc-text">
