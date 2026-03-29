@@ -118,7 +118,7 @@
 <div class="container-fluid tspots">
     <div class="text-center mb-4">
         <h2 class="tspots-title">Discover Sogod</h2>
-        <p style="color:#555; font-size:0.95rem; margin-top:-0.5rem;">Explore the natural beauty and heritage of Southern Leyte</p>
+        <p style="color:#555; font-size:0.95rem; margin-top:-0.5rem;">Explore destinations, hotels, cafes, restaurants, and heritage sites around Sogod</p>
     </div>
 
     <div class="tspots-grid">

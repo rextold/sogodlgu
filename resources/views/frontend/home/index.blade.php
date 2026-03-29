@@ -394,7 +394,7 @@
             <div class="ss-item">
                 <div class="ss-icon"><i class="fa fa-camera"></i></div>
                 <div class="ss-value">{{ App\TouristSpot::count() }}</div>
-                <div class="ss-label">Tourist Spots</div>
+                <div class="ss-label">Places to Visit</div>
             </div>
             <div class="ss-item">
                 <div class="ss-icon"><i class="fa fa-calendar"></i></div>

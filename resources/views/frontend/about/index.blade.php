@@ -233,7 +233,7 @@
             <div class="fs-item">
                 <div class="fs-icon"><i class="fa fa-camera"></i></div>
                 <div class="fs-value">{{ App\TouristSpot::count() }}</div>
-                <div class="fs-label">Tourist Spots</div>
+                <div class="fs-label">Places to Visit</div>
             </div>
             <div class="fs-item">
                 <div class="fs-icon"><i class="fa fa-newspaper-o"></i></div>
@@ -271,7 +271,7 @@
                     <div class="aeb-tag"><i class="fa fa-flag"></i> &nbsp;Discover More</div>
                     <div class="aeb-title">Explore the Best of Sogod,<br>Southern Leyte</div>
                     <div class="aeb-desc">
-                        From scenic tourist spots and rich cultural heritage to transparent governance and online services —
+                        From scenic destinations, hotels, cafes, and rich cultural heritage to transparent governance and online services —
                         Sogod has something for everyone.
                     </div>
                     <div class="aeb-actions">
