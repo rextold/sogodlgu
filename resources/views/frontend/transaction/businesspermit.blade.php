@@ -79,13 +79,14 @@
 .bp-content-body p { margin-bottom: 0.9rem; }
 .bp-content-body ul, .bp-content-body ol { padding-left: 22px; }
 .bp-content-body li { margin-bottom: 5px; }
-.bp-content-body table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.bp-content-body table { width: 100% !important; border-collapse: collapse; margin-top: 10px; height: auto !important; }
+.bp-content-body table tr { height: auto !important; }
 .bp-content-body table th {
     background: #0052a5; color: #fff; padding: 8px 12px;
-    font-size: 0.85rem; text-align: left;
+    font-size: 0.85rem; text-align: left; height: auto !important;
 }
 .bp-content-body table td {
-    padding: 8px 12px; border-bottom: 1px solid #f0f0f0; font-size: 0.85rem;
+    padding: 8px 12px; border-bottom: 1px solid #f0f0f0; font-size: 0.85rem; height: auto !important;
 }
 .bp-content-body table tr:hover td { background: #fdf5f1; }
 .bp-content-body blockquote {
