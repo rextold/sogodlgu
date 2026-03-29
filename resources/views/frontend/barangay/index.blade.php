@@ -188,7 +188,7 @@
         <div class="bs-inner">
             <div class="bs-item">
                 <div class="bs-icon"><i class="fa fa-building-o"></i></div>
-                <div class="bs-value">{{ $barangayofficials->pluck('barangay_id')->unique()->count() }}</div>
+                <div class="bs-value">{{ $barangays->count() }}</div>
                 <div class="bs-label">Total Barangays</div>
             </div>
             <div class="bs-item">
@@ -222,7 +222,7 @@
                 <div class="brgy-search-bar" data-aos="fade-up">
                     <span class="bsb-label"><i class="fa fa-search"></i> Search:</span>
                     <input type="text" id="brgySearch" placeholder="Type barangay name or captain..." oninput="filterBarangay()">
-                    <span class="bsb-count">Showing <span id="brgyCount">{{ $barangayofficials->pluck('barangay_id')->unique()->count() }}</span> of {{ $barangayofficials->pluck('barangay_id')->unique()->count() }} barangays</span>
+                    <span class="bsb-count">Showing <span id="brgyCount">{{ $barangays->count() }}</span> of {{ $barangays->count() }} barangays</span>
                 </div>
 
                 {{-- Officials Table --}}
