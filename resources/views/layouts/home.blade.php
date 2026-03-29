@@ -265,7 +265,7 @@
 
         /* Mobile (≤ 767px) */
         @media (max-width: 767px) {
-            .masthead .logo-img { width: 90px; height: 90px; }
+            .masthead .logo-img { width: 178px; height: 90px; }
             .masthead .lgu-title-block .lgu-name { font-size: 0.95rem; }
             .masthead .lgu-title-block { gap: 2px; }
             .masthead .dateclock { font-size: 0.75rem; padding: 0.4rem 0.65rem; border-radius: 8px; min-width: 70px; }
