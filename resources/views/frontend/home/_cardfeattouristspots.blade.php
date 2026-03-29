@@ -1,8 +1,8 @@
 <style>
 /* === Tourist Spots Grid Section === */
 .tspots {
-    padding: 3rem 1rem;
-    background: #fdfdfd; /* very light neutral background */
+    padding: 3rem 1rem 3.5rem;
+    background: linear-gradient(180deg, #f4f6f9 0%, #fff8f2 100%);
 }
 
 .tspots-title {
@@ -116,7 +116,10 @@
 </style>
 
 <div class="container-fluid tspots">
-    <h2 class="tspots-title">Tourism</h2>
+    <div class="text-center mb-4">
+        <h2 class="tspots-title">Discover Sogod</h2>
+        <p style="color:#555; font-size:0.95rem; margin-top:-0.5rem;">Explore the natural beauty and heritage of Southern Leyte</p>
+    </div>
 
     <div class="tspots-grid">
         @if($feats = App\TouristSpot::inRandomOrder()->paginate(8))
@@ -141,8 +144,6 @@
     </div>
 
     <div class="tspots-see-more">
-        <a href="{{ route('tourism') }}">See More</a>
+        <a href="{{ route('tourism') }}">See More &rarr;</a>
     </div>
-</div>
-
 </div>

@@ -47,83 +47,183 @@
         <link rel="stylesheet" href="{{ asset('css/style3.css') }}"/>
         <link rel="stylesheet" href="{{ asset('aos/aos.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/card-carousel.css') }}" />
-        <!-- Masthead CSS -->
+        <!-- Global Brand CSS Variables + Masthead CSS -->
         <style>
+        /* ============================================================
+           SOGOD LGU BRAND DESIGN SYSTEM
+           Primary Orange : #ea5211
+           Dark Orange    : #c9460e
+           Primary Blue   : #0052a5
+           Dark Blue      : #003d7a
+           Gold           : #f4c542
+           Dark Navy      : #001f2d
+        ============================================================ */
+        :root {
+            --sogod-orange:      #ea5211;
+            --sogod-orange-dark: #c9460e;
+            --sogod-blue:        #0052a5;
+            --sogod-blue-dark:   #003d7a;
+            --sogod-gold:        #f4c542;
+            --sogod-navy:        #001f2d;
+            --sogod-white:       #ffffff;
+            --sogod-light:       #fff8f2;
+            --card-radius:       12px;
+            --card-shadow:       0 4px 16px rgba(0,0,0,0.09);
+        }
+
+        /* ---- Global Body ---- */
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* ---- Section Headers ---- */
+        .sgd-section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--sogod-orange), var(--sogod-orange-dark));
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 10px 18px;
+            border-radius: var(--card-radius) var(--card-radius) 0 0;
+            letter-spacing: 0.4px;
+        }
+        .sgd-section-title.blue {
+            background: linear-gradient(135deg, var(--sogod-blue), var(--sogod-blue-dark));
+        }
+        .sgd-section-title.gold {
+            background: linear-gradient(135deg, var(--sogod-gold), #e2ac46);
+            color: #1a1a1a;
+        }
+
+        /* ---- Masthead ---- */
         .masthead {
             position: relative;
-            padding: 1rem;
+            padding: 0;
             overflow: hidden;
-            border-radius: 8px;
-            background: linear-gradient(-11deg, rgba(0,0,0,0.2), transparent), #ea5211;
+            background: linear-gradient(135deg, var(--sogod-blue-dark) 0%, var(--sogod-blue) 40%, var(--sogod-orange) 100%);
         }
-        
-        /* Blurred background */
         .masthead .header-bg {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
             background-size: cover;
             background-position: center;
-            filter: blur(9px) brightness(0.6);
+            filter: blur(10px) brightness(0.45);
             z-index: 0;
         }
-        
-        /* Overlay */
         .masthead .overlay {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(-11deg, rgba(0,0,0,0.2), transparent);
+            background: linear-gradient(135deg, rgba(0,61,122,0.82) 0%, rgba(0,82,165,0.6) 50%, rgba(234,82,17,0.55) 100%);
             z-index: 1;
         }
-        
-        /* Header Image */
+        .masthead .masthead-inner {
+            position: relative;
+            z-index: 2;
+            padding: 1rem 1.5rem;
+        }
         .masthead .header-img {
-            max-width: 567px;
+            max-width: 520px;
             height: auto;
             border-radius: 8px;
-            position: relative;
-            z-index: 2;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
         }
-        
-        /* Logo */
         .masthead .logo-img {
-            max-width: 181px;
+            max-width: 90px;
             height: auto;
-            position: relative;
-            z-index: 2;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
         }
-        
-        /* Clock / Date */
-        .masthead .dateclock {
-            position: relative;
-            z-index: 2;
-            display: inline-block;
-            background-color: rgba(0,0,0,0.5);
+        .masthead .lgu-title-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .masthead .lgu-title-block .lgu-name {
+            font-size: 1.35rem;
+            font-weight: 800;
             color: #fff;
-            padding: 0.75rem 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.2;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+        .masthead .lgu-title-block .lgu-tagline {
+            font-size: 0.82rem;
+            color: var(--sogod-gold);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-top: 3px;
+        }
+        .masthead .dateclock {
+            display: inline-block;
+            background: rgba(0,0,0,0.45);
+            color: #fff;
+            padding: 0.7rem 1.2rem;
             border-radius: 12px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-            transition: background 0.3s ease, transform 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.18);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.35);
+            transition: background 0.3s ease;
         }
-        .masthead .dateclock:hover {
-            background-color: rgba(0,0,0,0.7);
+        .masthead .dateclock:hover { background: rgba(0,0,0,0.65); }
+        .masthead .dateclock .time { display: block; font-size: 1.55rem; }
+        .masthead .dateclock .date { display: block; margin-top: 3px; font-size: 0.9rem; color: var(--sogod-gold); font-weight: 600; }
+
+        /* ---- Quick Services Bar ---- */
+        .quick-services-bar {
+            background: linear-gradient(135deg, var(--sogod-blue-dark), var(--sogod-blue));
+            padding: 0;
+        }
+        .quick-services-bar .qs-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0;
+        }
+        .quick-services-bar .qs-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            transition: background 0.25s ease, transform 0.2s ease;
+            border-right: 1px solid rgba(255,255,255,0.12);
+            min-width: 110px;
+            text-align: center;
+        }
+        .quick-services-bar .qs-item:last-child { border-right: none; }
+        .quick-services-bar .qs-item i {
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+            color: var(--sogod-gold);
+        }
+        .quick-services-bar .qs-item:hover {
+            background: var(--sogod-orange);
             transform: translateY(-2px);
+            color: #fff;
         }
-        .masthead .dateclock .time { display: block; font-size: 1.6rem; }
-        .masthead .dateclock .date { display: block; margin-top: 2px; font-size: 1rem; color: #ffd966; }
-        
-        /* Responsive */
+        .quick-services-bar .qs-item:hover i { color: #fff; }
+
+        /* ---- Responsive ---- */
         @media (max-width: 768px) {
-            .masthead .logo-img { width: 100%; margin-bottom: 0.5rem; }
-            .masthead .header-img { width: 100%; margin-bottom: 0.5rem; }
-            .masthead .dateclock { min-width: 100%; font-size: 1.3rem; margin-top: 0.5rem; }
-            .masthead .dateclock .time { font-size: 1.4rem; }
-            .masthead .dateclock .date { font-size: 0.95rem; }
+            .masthead .logo-img { max-width: 64px; }
+            .masthead .header-img { max-width: 100%; margin-top: 0.5rem; }
+            .masthead .lgu-title-block .lgu-name { font-size: 1rem; }
+            .masthead .dateclock { font-size: 1.1rem; }
+            .masthead .dateclock .time { font-size: 1.2rem; }
+            .quick-services-bar .qs-item { padding: 10px 12px; min-width: 90px; font-size: 0.72rem; }
         }
         </style>
 
@@ -145,31 +245,50 @@
 </head>
 
 <body>
-    <!-- Masthead HTML -->
-    <div class="container-fluid masthead py-3">
+    <!-- ===== MASTHEAD ===== -->
+    <div class="masthead">
         @if($img = App\PageHeader::where("status",2)->first())
-    
-            <!-- Blurred background -->
+            <!-- Blurred bg & overlay -->
             <div class="header-bg" style="background-image: url('{{ Voyager::image($img->image) }}');"></div>
-    
-            <!-- Overlay -->
             <div class="overlay"></div>
-    
-            <!-- Header Row -->
-            <div class="row align-items-center position-relative">
-                <div class="col-12 col-md-10 d-flex align-items-center flex-wrap">
-                    <!-- Logo on the left -->
-                    <img src="{{ asset('images/logo/logo2.png') }}" class="logo-img mr-3 mb-2 mb-md-0" alt="Sogod LGU Logo">
-                    <!-- Page Header Image beside logo -->
-                    <img src="{{ Voyager::image($img->image) }}" class="header-img mb-2 mb-md-0" alt="Page Header">
+        @endif
+
+        <div class="masthead-inner">
+            <div class="row align-items-center">
+                <!-- Left: Logo + Title + Header Image -->
+                <div class="col-12 col-md-10 d-flex align-items-center flex-wrap" style="gap:14px;">
+                    <img src="{{ asset('images/logo/logo2.png') }}" class="logo-img" alt="Sogod LGU Logo">
+                    <div class="lgu-title-block mr-3">
+                        <div class="lgu-name">Municipal Government</div>
+                        <div class="lgu-name" style="font-size:1.6rem;">of Sogod</div>
+                        <div class="lgu-tagline"><i class="fa fa-map-marker"></i> &nbsp;Southern Leyte, Philippines</div>
+                    </div>
+                    @if($img = App\PageHeader::where("status",2)->first())
+                        <img src="{{ Voyager::image($img->image) }}" class="header-img d-none d-md-block" alt="Page Header">
+                    @endif
                 </div>
-    
-                <!-- Clock -->
+                <!-- Right: Clock -->
                 <div class="col-12 col-md-2 text-md-right mt-2 mt-md-0">
-                    <div id="clock" class="dateclock text-white"></div>
+                    <div id="clock" class="dateclock"></div>
                 </div>
             </div>
-        @endif
+        </div>
+    </div>
+
+    <!-- ===== QUICK SERVICES BAR ===== -->
+    <div class="quick-services-bar">
+        <div class="container-fluid px-0">
+            <div class="qs-inner">
+                <a href="{{ route('home') }}" class="qs-item"><i class="fa fa-home"></i>Home</a>
+                <a href="{{ route('bpermit') }}" class="qs-item"><i class="fa fa-file-text-o"></i>Business Permit</a>
+                <a href="{{ route('gov.elected.officials') }}" class="qs-item"><i class="fa fa-users"></i>Officials</a>
+                <a href="{{ route('news') }}" class="qs-item"><i class="fa fa-newspaper-o"></i>News</a>
+                <a href="{{ route('tourism') }}" class="qs-item"><i class="fa fa-camera"></i>Tourism</a>
+                <a href="{{ route('fdp.index') }}" class="qs-item"><i class="fa fa-folder-open-o"></i>Transparency</a>
+                <a href="{{ route('barangay') }}" class="qs-item"><i class="fa fa-building-o"></i>Barangays</a>
+                <a href="{{ route('about') }}" class="qs-item"><i class="fa fa-info-circle"></i>About Sogod</a>
+            </div>
+        </div>
     </div>
 
 
@@ -206,72 +325,94 @@
 
 <!-- main end -->
 <style>
-/* Footer Styles */
+/* ============ ENHANCED FOOTER ============ */
 .footer {
-    background-color: #001f2d; /* dark blue, professional look */
-    color: #f0f0f0;
+    background: linear-gradient(180deg, #001a2c 0%, #001f2d 100%);
+    color: #d8dde2;
     font-family: 'Segoe UI', sans-serif;
-    padding: 40px 0;
+    padding: 50px 0 20px;
+    border-top: 4px solid var(--sogod-orange);
 }
-
+.footer-brand-bar {
+    background: var(--sogod-orange);
+    padding: 10px 0;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
 .footer a {
-    color: #f4c542; /* Sogod gold */
+    color: var(--sogod-gold);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.25s;
 }
-
-.footer a:hover {
-    color: #ea5211; /* Sogod orange */
-}
-
+.footer a:hover { color: var(--sogod-orange); }
 .footer .footer-logo img {
-    width: 100px;
-    margin-bottom: 10px;
+    width: 85px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
 }
-
 .footer .footer-section h6 {
     font-weight: 700;
-    font-size: 14px;
-    margin-bottom: 12px;
+    font-size: 0.85rem;
+    margin-bottom: 14px;
     color: #ffffff;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--sogod-orange);
+    display: inline-block;
 }
-
-.footer .list-inline li, .footer .list-group-item {
-    padding: 4px 0;
+.footer .list-group-item {
+    padding: 5px 0;
     font-size: 13px;
     background: transparent;
     border: none;
+    color: #b0b8c0;
 }
-
+.footer .list-group-item::before {
+    content: '‚Ä∫';
+    color: var(--sogod-orange);
+    margin-right: 6px;
+    font-weight: bold;
+}
 .footer .map-container iframe {
-    border-radius: 12px;
+    border-radius: 10px;
     width: 100%;
     height: 180px;
     border: 0;
 }
-
-.footer .followus {
-    margin-bottom: 20px;
+.footer .followus { margin-bottom: 20px; }
+.footer-bottom {
+    background: rgba(0,0,0,0.35);
+    text-align: center;
+    padding: 12px 0;
+    font-size: 12px;
+    color: #7a8a96;
+    margin-top: 30px;
 }
+.footer-bottom span { color: var(--sogod-orange); }
 </style>
 
+<div class="footer-brand-bar">
+    Official Website ‚Äî Municipality of Sogod, Southern Leyte &nbsp;|&nbsp; www.sogodlgu.gov.ph
+</div>
 <div class="footer">
     <div class="container-fluid">
         <div class="row">
             <!-- Logo and About -->
-            <div class="col-md-3 footer-section">
+            <div class="col-md-3 footer-section mb-4">
                 <div class="footer-logo">
                     <img src="{{ asset('images/logo.png') }}" alt="Sogod LGU Logo">
                 </div>
-                <p style="font-size: 13px;">All rights reserved | www.sogodlgu.gov.ph</p>
                 <h6>About the Website</h6>
-                <p style="font-size: 13px; color:#d0d0d0;">Official Website of Sogod, Southern Leyte.</p>
+                <p style="font-size:13px; color:#9aa5ad;">Official portal of the Municipal Government of Sogod, Southern Leyte. Serving our community with transparency and accountability.</p>
             </div>
 
             <!-- Links & Socials -->
-            <div class="col-md-4 footer-section">
+            <div class="col-md-4 footer-section mb-4">
                 <div class="followus">
                     @include('frontend.widgets._followus')
                 </div>
@@ -286,21 +427,32 @@
             </div>
 
             <!-- Map & Contact -->
-            <div class="col-md-5 footer-section">
+            <div class="col-md-5 footer-section mb-4">
                 <h6>Municipal Hall Location</h6>
                 <div class="map-container mb-3">
                     <iframe src="https://maps.google.com/maps?q=Sogod%20southern%20leyte%20municipal%20hall&t=k&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                 </div>
-                <h6>Address</h6>
-                <p style="font-size: 13px;">Corner Concepcion St. & Osmeè´–a Street Zone 1, Sogod, Southern Leyte</p>
-                <h6>Telephone</h6>
-                <p style="font-size: 13px;">(Insert numbers here)</p>
+                <div class="row">
+                    <div class="col-6">
+                        <h6>Address</h6>
+                        <p style="font-size:13px; color:#9aa5ad;">Corner Concepcion St. &amp; Osme√±a Street Zone 1, Sogod, Southern Leyte</p>
+                    </div>
+                    <div class="col-6">
+                        <h6>Telephone</h6>
+                        <p style="font-size:13px; color:#9aa5ad;">(Insert numbers here)</p>
+                        <h6>Email</h6>
+                        <p style="font-size:13px; color:#9aa5ad;">(Insert email here)</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="footer-bottom">
+        &copy; {{ date('Y') }} <span>Municipal Government of Sogod</span>, Southern Leyte. All rights reserved.
+    </div>
 </div>
 <!--Standard Footer-->
-<div id="gwt-standard-footer" style="margin-top: 30px"></div>
+<div id="gwt-standard-footer" style="margin-top: 10px"></div>
 
 <div><a href="#main-nav" id="back-to-top" title="Back to Top"><i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true"></i>
 </a></div>

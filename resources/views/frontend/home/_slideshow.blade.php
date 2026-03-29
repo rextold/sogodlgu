@@ -25,21 +25,45 @@
 /* Carousel Captions with overlay */
 #carousel-1 .carousel-caption {
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.45);
-    padding: 15px 25px;
-    border-radius: 10px;
-    max-width: 75%;
-    text-align: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    background: linear-gradient(to top, rgba(0,30,70,0.82) 0%, rgba(0,50,120,0.5) 60%, transparent 100%);
+    padding: 30px 30px 18px;
+    border-radius: 0 0 12px 12px;
+    max-width: 100%;
+    text-align: left;
     color: #fff;
 }
 
+#carousel-1 .carousel-caption .caption-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    margin-bottom: 4px;
+    display: block;
+}
+
+#carousel-1 .carousel-caption .caption-badge {
+    display: inline-block;
+    background: var(--sogod-orange, #ea5211);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
 #carousel-1 .carousel-caption p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin: 0;
-    line-height: 1.4;
+    color: rgba(255,255,255,0.88);
+    max-width: 600px;
 }
 
 /* Carousel Indicators */
@@ -101,7 +125,11 @@
                     <a href="{{ $feat->url }}">
                         <img src="{{ Voyager::image($feat->image) }}" alt="{{ $feat->title }}" class="img-fluid">
                     </a>
-                    <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-caption">
+                        <div class="caption-badge"><i class="fa fa-map-marker"></i> Sogod, Southern Leyte</div>
+                        @if($feat->title)
+                            <span class="caption-title">{{ $feat->title }}</span>
+                        @endif
                         <p>{!! $feat->descriptions !!}</p>
                     </div>
                 </div>

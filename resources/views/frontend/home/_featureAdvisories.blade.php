@@ -1,32 +1,27 @@
-<div class="advticker bg-light">
+<div class="advticker">
     <div>
-        <ul style="list-style: none; margin-left: 0;" class="p-1">
+        <ul style="list-style: none; margin-left: 0; padding: 0;">
             @php
                 $posts = App\Post::orderBy('created_at', 'desc')
                     ->where('status', 'PUBLISHED')
                     ->with('category')
                     ->inRandomOrder()
-                    ->get(); // ✅ show all, not paginated
+                    ->get();
             @endphp
 
             @foreach($posts as $post)
                 @if($post->category && $post->category->order == 2)
-                    <li class="news-item">
-                        <div class="mb-3 p-1">
-                            <a href="{{ route('article.show', [
-                                'category' => strtolower($post->category->name),
-                                'id' => $post->id,
-                                'title' => $post->slug
-                            ]) }}">
-                                <p>{{ $post->title }}</p>
-                            </a>
-                            <div style="font-size: 12px; color: #bbbbbbed;">
-                                on <span class="font-lato">{{ date('F d, Y', strtotime($post->created_at)) }}</span>
-                                <article>
-                                    {{ Str::limit(strip_tags($post->excerpt), 20, '...') }}
-                                </article>
-                            </div>
-                        </div>  
+                    <li class="adv-item">
+                        <a href="{{ route('article.show', [
+                            'category' => strtolower($post->category->name),
+                            'id'       => $post->id,
+                            'title'    => $post->slug
+                        ]) }}">{{ $post->title }}</a>
+                        <div class="adv-date">
+                            <i class="fa fa-calendar-o"></i>
+                            {{ date('F d, Y', strtotime($post->created_at)) }}
+                        </div>
+                        <article>{{ Str::limit(strip_tags($post->excerpt), 55, '...') }}</article>
                     </li>
                 @endif
             @endforeach
@@ -43,11 +38,6 @@
         interval: 4000,
         height: 'auto',
         mousePause: true,
-        controls: {
-            up: '.up',
-            down: '.down',
-            toggle: '.toggle',
-            stopText: 'Stop !!!'
-        }
+        controls: { up: '.up', down: '.down', toggle: '.toggle', stopText: 'Stop' }
     }).data('easyTicker');
 </script>
