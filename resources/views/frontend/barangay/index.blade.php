@@ -12,8 +12,9 @@
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-9" data-aos="fade-left">
-            <div class="" style="color: #586773;">       
-                <table class="table">
+            <div class="" style="color: #586773;">
+                <div class="table-responsive">
+                  <table class="table">
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">Name of Barangays</th>
@@ -30,8 +31,7 @@
                         </tr>
                      @endforeach
                   </tbody>
-                </table>
-            </div>
+                </table>                </div>            </div>
         </div>
         <div class="col-md-3">
             @include('frontend.widgets._transseal')

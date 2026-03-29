@@ -217,14 +217,93 @@
         .quick-services-bar .qs-item:hover i { color: #fff; }
 
         /* ---- Responsive ---- */
-        @media (max-width: 768px) {
-            .masthead .logo-img { max-width: 64px; }
-            .masthead .header-img { max-width: 100%; margin-top: 0.5rem; }
-            .masthead .lgu-title-block .lgu-name { font-size: 1rem; }
-            .masthead .dateclock { font-size: 1.1rem; }
-            .masthead .dateclock .time { font-size: 1.2rem; }
-            .quick-services-bar .qs-item { padding: 10px 12px; min-width: 90px; font-size: 0.72rem; }
+
+        /* Tablet (≤ 991px) */
+        @media (max-width: 991px) {
+            .masthead .lgu-title-block .lgu-name { font-size: 1.1rem; }
+            .masthead .masthead-inner { padding: 0.8rem 1rem; }
         }
+
+        /* Mobile (≤ 767px) */
+        @media (max-width: 767px) {
+            .masthead .logo-img { max-width: 52px; }
+            .masthead .header-img { display: none !important; }
+            .masthead .lgu-title-block .lgu-name { font-size: 0.95rem; }
+            .masthead .lgu-title-block { gap: 2px; }
+            .masthead .dateclock { font-size: 0.85rem; padding: 0.45rem 0.8rem; border-radius: 8px; }
+            .masthead .dateclock .time { font-size: 1rem; }
+            .masthead .dateclock .date { font-size: 0.72rem; }
+            /* Quick Services Bar — horizontal scroll on mobile */
+            .quick-services-bar .qs-inner {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                justify-content: flex-start;
+            }
+            .quick-services-bar .qs-inner::-webkit-scrollbar { display: none; }
+            .quick-services-bar .qs-item {
+                padding: 10px 14px;
+                min-width: 80px;
+                font-size: 0.7rem;
+                flex-shrink: 0;
+            }
+            .quick-services-bar .qs-item i { font-size: 1.1rem; margin-bottom: 3px; }
+            /* Footer */
+            .footer { padding: 32px 0 16px; }
+            .footer-brand-bar { font-size: 0.7rem; letter-spacing: 0.5px; padding: 8px 10px; }
+            .footer .map-container iframe { height: 150px; }
+        }
+
+        /* Small Mobile (≤ 480px) */
+        @media (max-width: 480px) {
+            .masthead .masthead-inner { padding: 0.6rem 0.75rem; }
+            .masthead .logo-img { max-width: 42px; }
+            .masthead .lgu-title-block .lgu-name { font-size: 0.82rem; }
+            .masthead .lgu-title-block .lgu-tagline { font-size: 0.68rem; }
+        }
+
+        /* ============================================================
+           GLOBAL RESPONSIVE — legacy pages (all pages benefit)
+        ============================================================ */
+
+        /* Tables: horizontal scroll on every page */
+        @media (max-width: 767px) {
+            .table-responsive-auto { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .container .table,
+            .container-fluid .table { font-size: 0.83rem; }
+            /* Wrap any bare table in .container in overflow scroll */
+            .container table:not(.fees-table) { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
+        }
+
+        /* Profile cards: 2-col grid on phones */
+        @media (max-width: 575px) {
+            .col-md-3 .profile-card-4 img { height: 140px; object-fit: cover; }
+            /* Make col-md-3 inside a loop give 2 cards per row on mobile */
+            .officials .row > .col-md-3 { flex: 0 0 50%; max-width: 50%; }
+        }
+
+        /* Map iframes: height reset on mobile */
+        @media (max-width: 767px) {
+            iframe[src*="maps.google"] { min-height: 220px !important; height: 220px !important; }
+            .gmap_canvas iframe { height: 220px !important; min-height: 220px !important; }
+        }
+
+        /* Sidebar .side-style padding on mobile */
+        @media (max-width: 767px) {
+            .side-style { padding-top: 1.5rem; }
+        }
+
+        /* Breadcrumbs: wrap on mobile */
+        @media (max-width: 480px) {
+            .breadcrumb { flex-wrap: wrap; padding: 6px 10px; font-size: 0.78rem; }
+        }
+
+        /* General img responsiveness fallback */
+        img { max-width: 100%; height: auto; }
+
+        /* Prevent body horizontal overflow on all pages */
+        body { overflow-x: hidden; }
         </style>
 
 

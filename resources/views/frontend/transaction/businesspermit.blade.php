@@ -290,6 +290,63 @@
     font-size: 0.8rem; font-weight: 700; color: #555; text-transform: uppercase;
     letter-spacing: 0.5px; margin-bottom: 10px;
 }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+/* Tablet (≤ 991px) */
+@media (max-width: 991px) {
+    .bp-hero h1 { font-size: 1.65rem; }
+    .bp-hero .hero-icon { font-size: 2.4rem; }
+}
+
+/* Mobile (≤ 767px) */
+@media (max-width: 767px) {
+    /* Hero */
+    .bp-hero { padding: 28px 0 24px; }
+    .bp-hero .hero-icon { font-size: 2rem; margin-bottom: 6px; }
+    .bp-hero h1 { font-size: 1.35rem; }
+    .bp-hero .hero-sub { font-size: 0.84rem; }
+    .bp-hero .bp-breadcrumb { margin-top: 10px; }
+    /* Content cards */
+    .bp-content-card .bpcc-body { padding: 14px 16px; }
+    .bp-steps-card .bpsc-body { padding: 14px 16px; }
+    .step-item { gap: 12px; padding: 12px 0; }
+    .step-num { width: 30px; height: 30px; font-size: 0.82rem; }
+    .step-content .step-title { font-size: 0.88rem; }
+    .step-content .step-desc { font-size: 0.8rem; }
+    /* Requirements tabs */
+    .req-tab-btn { padding: 5px 12px; font-size: 0.78rem; }
+    .req-list li { font-size: 0.82rem; padding: 7px 10px; }
+    /* Fees table — horizontal scroll */
+    .bp-fees-card .bpfc-body { padding: 14px 12px; overflow-x: auto; }
+    .fees-table { min-width: 480px; }
+    /* Sidebar cards */
+    .deadline-banner { padding: 12px 14px; }
+    .deadline-banner .db-title { font-size: 0.84rem; }
+    .deadline-banner .db-desc { font-size: 0.75rem; }
+    .ebpls-cta-card .ebpls-cta-title { font-size: 0.95rem; }
+    /* Reorder: sidebar goes below main on mobile (Bootstrap default) */
+    .bp-wrap .row { flex-direction: column; }
+    .bp-wrap .col-md-8,
+    .bp-wrap .col-md-4 { max-width: 100%; flex: 0 0 100%; }
+}
+
+/* Small Mobile (≤ 480px) */
+@media (max-width: 480px) {
+    .bp-hero h1 { font-size: 1.15rem; }
+    .bp-hero .hero-tag { font-size: 0.65rem; }
+    .req-tabs { gap: 6px; }
+    .req-tab-btn { padding: 4px 10px; font-size: 0.74rem; }
+    .fees-table th, .fees-table td { padding: 7px 10px; font-size: 0.78rem; }
+    .ebpls-cta-card .ebpls-cta-body { padding: 14px 14px 16px; }
+    .office-info-list li { font-size: 0.8rem; }
+    .bp-content-card .bpcc-header,
+    .bp-steps-card .bpsc-header,
+    .bp-reqs-card .bprc-header,
+    .bp-fees-card .bpfc-header { font-size: 0.88rem; padding: 10px 14px; }
+}
 </style>
 
 {{-- ===== PAGE HERO ===== --}}

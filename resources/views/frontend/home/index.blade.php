@@ -315,6 +315,59 @@
     background: linear-gradient(to right, #0052a5, #ea5211 55%, rgba(244,197,66,0.4));
     border-radius: 2px;
 }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+/* Tablet (≤ 991px) */
+@media (max-width: 991px) {
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+    .mv-teaser { padding: 28px 20px; }
+    .mv-teaser .mv-title { font-size: 1.35rem; }
+    .ebpls-section { padding: 26px 16px; }
+}
+
+/* Mobile (≤ 767px) */
+@media (max-width: 767px) {
+    /* Stats strip */
+    .stats-strip .ss-value { font-size: 1.5rem; }
+    .stats-strip .ss-label { font-size: 0.65rem; }
+    /* Services */
+    .services-section { padding: 1.5rem 0.5rem; }
+    .services-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .service-card { padding: 16px 8px 14px; }
+    .service-card .sc-icon { font-size: 1.6rem; margin-bottom: 7px; }
+    .service-card .sc-label { font-size: 0.75rem; }
+    /* Section label */
+    .section-label .sl-text { font-size: 0.95rem; }
+    /* M&V Teaser */
+    .mv-teaser { padding: 24px 16px; }
+    .mv-teaser .mv-title { font-size: 1.2rem; }
+    .mv-teaser .mv-desc { font-size: 0.84rem; margin-bottom: 12px; }
+    .mv-teaser .mv-excerpt { font-size: 0.82rem; padding: 8px 12px; margin-bottom: 14px; }
+    .mv-teaser .mv-btn,
+    .mv-teaser .mv-btn-outline { padding: 9px 18px; font-size: 0.82rem; }
+    /* eBPLS */
+    .ebpls-section { padding: 22px 14px; }
+    .ebpls-section .ebpls-title { font-size: 1.2rem; }
+    .ebpls-section .ebpls-desc { font-size: 0.84rem; }
+    /* News grid */
+    .news-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; padding: 10px; }
+    /* Home card header */
+    .home-card .hcard-header { font-size: 0.88rem; padding: 10px 14px; }
+}
+
+/* Small Mobile (≤ 480px) */
+@media (max-width: 480px) {
+    .services-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .service-card .sc-icon { font-size: 1.35rem; }
+    .service-card .sc-label { font-size: 0.68rem; }
+    .news-grid { grid-template-columns: 1fr 1fr; }
+    .mv-teaser .mv-title { font-size: 1.05rem; }
+    .mv-teaser .mv-tag { font-size: 0.65rem; }
+    .stats-strip .ss-value { font-size: 1.3rem; }
+}
 </style>
 
 {{-- ===== SLIDESHOW ===== --}}
