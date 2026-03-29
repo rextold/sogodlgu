@@ -10,7 +10,7 @@
 /* ---- Page Hero ---- */
 .mv-hero {
     background: linear-gradient(135deg, #001f2d 0%, #003d7a 50%, #0052a5 100%);
-    padding: 40px 0 32px;
+    padding: 18px 0 14px;
     position: relative;
     overflow: hidden;
 }
@@ -26,13 +26,13 @@
     height: 4px;
     background: linear-gradient(to right, #ea5211, #f4c542, #ea5211);
 }
-.mv-hero .hero-icon { font-size: 2.8rem; color: rgba(244,197,66,0.55); margin-bottom: 10px; }
+.mv-hero .hero-icon { font-size: 1.8rem; color: rgba(244,197,66,0.55); margin-bottom: 4px; }
 .mv-hero .hero-tag {
     display: inline-block; background: rgba(234,82,17,0.9); color: #fff;
     font-size: 0.7rem; font-weight: 700; padding: 3px 12px;
     border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;
 }
-.mv-hero h1 { font-size: 2rem; font-weight: 900; color: #fff; margin-bottom: 6px; line-height: 1.2; }
+.mv-hero h1 { font-size: 1.35rem; font-weight: 900; color: #fff; margin-bottom: 4px; line-height: 1.2; }
 .mv-hero .hero-sub { font-size: 0.92rem; color: rgba(255,255,255,0.75); }
 .mv-hero .mv-breadcrumb {
     display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 14px;

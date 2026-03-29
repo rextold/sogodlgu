@@ -5,7 +5,7 @@
     #banner {
         background: #ce4c14;
         color: #fff;
-        padding: 40px 0;
+        padding: 18px 0 14px;
         text-align: center;
     }
     #banner h1 {

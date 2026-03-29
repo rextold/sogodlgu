@@ -10,7 +10,7 @@
 /* ---- Hero ---- */
 .tsd-hero {
     background: linear-gradient(135deg, #001f2d 0%, #003d7a 50%, #0052a5 100%);
-    padding: 40px 0 32px;
+    padding: 18px 0 14px;
     position: relative;
     overflow: hidden;
 }
@@ -28,7 +28,7 @@
     font-size: 0.7rem; font-weight: 700; padding: 3px 12px;
     border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;
 }
-.tsd-hero h1 { font-size: 1.9rem; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.tsd-hero h1 { font-size: 1.35rem; font-weight: 900; color: #fff; margin-bottom: 4px; }
 .tsd-breadcrumb {
     display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 14px;
 }
