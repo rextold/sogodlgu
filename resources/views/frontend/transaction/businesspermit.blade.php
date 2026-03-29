@@ -9,7 +9,7 @@
 
 /* ---- Page Hero ---- */
 .bp-hero {
-    background: linear-gradient(135deg, #001f2d 0%, #003d7a 50%, #0052a5 100%);
+    background: linear-gradient(135deg, #001f2d 0%, #003d7a 45%, #0052a5 70%, #c9460e 100%);
     padding: 18px 0 14px;
     position: relative;
     overflow: hidden;
@@ -66,10 +66,11 @@
     overflow: hidden; margin-bottom: 24px;
 }
 .bp-content-card .bpcc-header {
-    background: linear-gradient(135deg, #0052a5, #003d7a);
+    background: linear-gradient(135deg, #001f2d, #003d7a 60%, #ea5211);
     padding: 12px 20px;
     display: flex; align-items: center; gap: 9px;
     color: #fff; font-weight: 700; font-size: 0.95rem;
+    border-bottom: 3px solid #ea5211;
 }
 .bp-content-card .bpcc-body {
     padding: 20px 24px;
@@ -113,10 +114,10 @@
 .ebpls-cta-card .ebpls-cta-body { padding: 18px 18px 20px; }
 .ebpls-cta-card .ebpls-cta-tag {
     display: inline-flex; align-items: center; gap: 5px;
-    background: #e8f0fb; color: #0052a5;
+    background: rgba(234,82,17,0.12); color: #ea5211;
     font-size: 0.7rem; font-weight: 700; padding: 3px 10px;
     border-radius: 12px; letter-spacing: 0.5px; text-transform: uppercase;
-    margin-bottom: 9px;
+    margin-bottom: 9px; border: 1px solid rgba(234,82,17,0.25);
 }
 .ebpls-cta-card .ebpls-cta-title {
     font-size: 1rem; font-weight: 800; color: #001f2d;
@@ -129,13 +130,14 @@
 .ebpls-cta-card .ebpls-btn-group { display: flex; flex-direction: column; gap: 8px; }
 .ebpls-cta-card .ebpls-btn-login {
     display: flex; align-items: center; justify-content: center; gap: 7px;
-    background: linear-gradient(135deg, #0052a5, #003d7a);
+    background: linear-gradient(135deg, #ea5211, #c9460e);
     color: #fff; font-weight: 700; font-size: 0.85rem;
     padding: 10px 14px; border-radius: 8px; text-decoration: none;
     transition: all 0.2s;
+    box-shadow: 0 3px 12px rgba(234,82,17,0.35);
 }
 .ebpls-cta-card .ebpls-btn-login:hover {
-    background: linear-gradient(135deg, #003d7a, #002a56);
+    background: linear-gradient(135deg, #c9460e, #a33808);
     color: #fff; text-decoration: none; transform: translateY(-2px);
 }
 
