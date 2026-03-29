@@ -446,17 +446,6 @@
     </div>
 </div>
 
-{{-- ===== MAYOR'S WELCOME ===== --}}
-<div class="container-fluid px-3 pb-3">
-    <div class="section-label mb-3">
-        <span class="sl-text"><i class="fa fa-star" style="color:#ea5211;"></i> &nbsp;Mayor's Message</span>
-        <div class="sl-line"></div>
-    </div>
-    <div data-aos="fade-up">
-        @include('frontend.home._welcome')
-    </div>
-</div>
-
 {{-- ===== NEWS + SIDEBAR ===== --}}
 <div class="container-fluid px-3 py-2">
     <div class="row">
